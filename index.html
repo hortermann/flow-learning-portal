@@ -304,11 +304,13 @@ document.getElementById('enter-btn').addEventListener('click', startListening);
 document.getElementById('listener-name').addEventListener('keydown', e => { if(e.key==='Enter') startListening(); });
 
 async function startListening() {
-  const v = document.getElementById('listener-name').value.trim();
-  if (!v || !v.includes('@')) { alert('Please enter a valid email address.'); return; }
-  listener = v;
-  localStorage.setItem('flow_listener', listener);
-  await showApp();
+  try {
+    const v = document.getElementById('listener-name').value.trim();
+    if (!v || !v.includes('@')) { alert('Please enter a valid email address.'); return; }
+    listener = v;
+    localStorage.setItem('flow_listener', listener);
+    await showApp();
+  } catch(e) { alert('Login error: ' + e.message); }
 }
 function logout() {
   listener = ''; localStorage.removeItem('flow_listener');
