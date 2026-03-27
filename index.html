@@ -202,6 +202,10 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
         <div class="no-skip-note">🔒 Fast-forward disabled — please listen in full</div>
       </div>
       <div class="upload-note" id="upload-note"></div>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <button id="download-btn" onclick="downloadEp()" style="flex:1;background:var(--ultra-blue);color:white;border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:none">⬇ Download Episode</button>
+        <button id="manual-complete-btn" onclick="manualComplete()" style="flex:1;background:var(--flow-gray);color:var(--ultra-blue);border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:none">✔ Mark as Complete</button>
+      </div>
       <div class="completion-msg" id="completion-msg">
         <h4>✅ Episode Complete!</h4>
         <p>Great work! Your completion has been recorded.</p>
@@ -406,13 +410,28 @@ function openPlayer(ep) {
   if (ep.audio_url) {
     audioEl.src = ep.audio_url; audioEl.load(); setupAudio();
     document.getElementById('upload-note').textContent = '';
+    document.getElementById('download-btn').style.display = 'block';
   } else {
     document.getElementById('upload-note').textContent = '⚠ No audio URL set for this episode yet.';
+    document.getElementById('download-btn').style.display = 'none';
   }
+  // Show manual complete if not already done
+  const already = completions.find(c => c.listener === listener && c.ep_id === ep.id);
+  document.getElementById('manual-complete-btn').style.display = already ? 'none' : 'block';
+  if (already) document.getElementById('completion-msg').style.display = 'block';
   document.getElementById('player-modal').classList.add('open');
 }
 
 function setupAudio() {
+  // Mobile: remove old listeners by cloning
+  const newAudio = audioEl.cloneNode(true);
+  audioEl.parentNode.replaceChild(newAudio, audioEl);
+  audioEl = newAudio;
+  audioEl.src = currentEp.audio_url;
+  audioEl.preload = 'metadata';
+  audioEl.controls = false;
+  audioEl.playsInline = true; // critical for iOS
+
   audioEl.ontimeupdate = () => {
     const cur = audioEl.currentTime, dur = audioEl.duration || 0;
     if (cur > maxReached + 1.5) { audioEl.currentTime = maxReached; return; }
@@ -425,6 +444,25 @@ function setupAudio() {
   audioEl.onended = () => { isPlaying = false; updatePlayBtn(false); markComplete(); };
   audioEl.onplay = () => { isPlaying = true; updatePlayBtn(true); };
   audioEl.onpause = () => { isPlaying = false; updatePlayBtn(false); };
+  audioEl.onerror = () => {
+    document.getElementById('upload-note').textContent = '⚠ Unable to load audio. Check the URL or try a different host.';
+    updatePlayBtn(false); isPlaying = false;
+  };
+}
+
+function togglePlay() {
+  if (!audioEl || !audioEl.src) return;
+  if (isPlaying) {
+    audioEl.pause();
+  } else {
+    // Mobile requires play() called directly from user gesture
+    const p = audioEl.play();
+    if (p !== undefined) {
+      p.catch(e => {
+        document.getElementById('upload-note').textContent = '⚠ Tap play again — your browser requires a direct tap to start audio.';
+      });
+    }
+  }
 }
 
 function togglePlay() { if (!audioEl || !audioEl.src) return; isPlaying ? audioEl.pause() : audioEl.play(); }
@@ -519,7 +557,23 @@ function renderAdminCompletions() {
     </div>`).join('');
 }
 
-function flash(id) { const el = document.getElementById(id); el.style.display = 'block'; setTimeout(() => el.style.display = 'none', 2000); }
+function downloadEp() {
+  if (!currentEp || !currentEp.audio_url) return;
+  const a = document.createElement('a');
+  a.href = currentEp.audio_url;
+  a.download = currentEp.title + '.mp3';
+  a.target = '_blank';
+  a.click();
+}
+
+function manualComplete() {
+  if (confirm('Mark "' + currentEp.title + '" as complete? Only do this if you have listened to the full episode.')) {
+    markComplete();
+    document.getElementById('manual-complete-btn').style.display = 'none';
+  }
+}
+
+ const el = document.getElementById(id); el.style.display = 'block'; setTimeout(() => el.style.display = 'none', 2000); }
 
 // Init
 const saved = localStorage.getItem('flow_listener');
