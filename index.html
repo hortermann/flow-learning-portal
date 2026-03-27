@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Flow Service Partners – Learning Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ultra-blue:#0A2240;--sky-blue:#87B7E8;--vital-green:#00C08B;--flow-gray:#D6DBE0;--white:#fff}
@@ -63,9 +62,7 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 .lb-row{display:flex;align-items:center;padding:14px 24px;border-bottom:1px solid var(--flow-gray);gap:16px}
 .lb-row:last-child{border-bottom:none}
 .lb-rank{font-size:18px;font-weight:900;color:var(--flow-gray);min-width:32px}
-.lb-rank.gold{color:#F5A623}
-.lb-rank.silver{color:#9B9B9B}
-.lb-rank.bronze{color:#C07B3A}
+.lb-rank.gold{color:#F5A623}.lb-rank.silver{color:#9B9B9B}.lb-rank.bronze{color:#C07B3A}
 .lb-name{font-weight:700;font-size:14px;flex:1;word-break:break-all}
 .lb-bar-wrap{flex:2;background:var(--flow-gray);border-radius:4px;height:8px;overflow:hidden}
 .lb-bar{height:100%;background:var(--vital-green);border-radius:4px;transition:width .6s ease}
@@ -73,7 +70,7 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 .lb-empty{text-align:center;padding:40px;color:#aaa;font-size:14px}
 #player-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center}
 #player-modal.open{display:flex}
-.player-card{background:var(--white);border-radius:16px;width:90%;max-width:540px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4)}
+.player-card{background:var(--white);border-radius:16px;width:95%;max-width:540px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4)}
 .player-header{background:var(--ultra-blue);padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
 .player-header h3{color:var(--white);font-size:16px;font-weight:700}
 .close-btn{background:none;border:none;color:var(--sky-blue);font-size:22px;cursor:pointer}
@@ -81,7 +78,7 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 .player-desc{font-size:13px;color:#666;margin-bottom:20px;line-height:1.6}
 .audio-wrap{background:var(--flow-gray);border-radius:10px;padding:16px}
 .audio-controls{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.play-pause{width:44px;height:44px;background:var(--ultra-blue);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.play-pause{width:54px;height:54px;background:var(--ultra-blue);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 .play-pause svg{margin-left:2px}
 .time-display{font-size:13px;font-weight:700;color:var(--ultra-blue);min-width:90px}
 .progress-wrap{height:8px;background:#c5cdd6;border-radius:4px;overflow:hidden;cursor:not-allowed}
@@ -113,7 +110,7 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 .form-row input,.form-row textarea{width:100%;border:2px solid var(--flow-gray);border-radius:8px;padding:10px 12px;font-size:13px;font-family:inherit;outline:none;transition:border .2s}
 .form-row input:focus,.form-row textarea:focus{border-color:var(--sky-blue)}
 .form-row textarea{height:70px;resize:vertical}
-.form-row .hint{font-size:11px;color:#aaa;margin-top:4px}
+.hint{font-size:11px;color:#aaa;margin-top:4px}
 .btn-add{background:var(--vital-green);color:var(--white);border:none;border-radius:8px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;width:100%;margin-top:4px;transition:background .2s}
 .btn-add:hover{background:#00a87a}
 .admin-ep-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--flow-gray);border-radius:8px;margin-bottom:8px;font-size:13px}
@@ -122,9 +119,6 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 .comp-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--flow-gray);border-radius:8px;margin-bottom:6px;font-size:12px}
 .comp-dot{width:8px;height:8px;background:var(--vital-green);border-radius:50%;flex-shrink:0}
 .divider{height:1px;background:var(--flow-gray);margin:20px 0}
-.loading{text-align:center;padding:40px;color:#aaa;font-size:14px}
-.spinner{display:inline-block;width:24px;height:24px;border:3px solid var(--flow-gray);border-top-color:var(--ultra-blue);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:8px}
-@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -132,7 +126,7 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 <header>
   <div class="logo-text">FLOW SERVICE PARTNERS</div>
   <h2>Learning Portal</h2>
-  <button class="admin-btn" onclick="promptAdmin()">⚙ Admin</button>
+  <button class="admin-btn" id="admin-open-btn">⚙ Admin</button>
 </header>
 
 <div id="gate">
@@ -144,19 +138,19 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
     </svg>
     <h2>Welcome to Flow Learning</h2>
     <p>Enter your email address to access the sales training podcast library.</p>
-    <input id="listener-name" type="email" placeholder="your@email.com" maxlength="100" onkeydown="if(event.key==='Enter')startListening()"/>
-    <button class="btn-primary" onclick="startListening()">Enter Portal</button>
+    <input id="listener-name" type="email" placeholder="your@email.com" maxlength="100"/>
+    <button class="btn-primary" id="enter-btn">Enter Portal</button>
   </div>
 </div>
 
 <div id="app">
   <div class="welcome-bar">
     <span>Welcome, <strong id="display-name"></strong></span>
-    <button class="logout-btn" onclick="logout()">Switch User</button>
+    <button class="logout-btn" id="logout-btn">Switch User</button>
   </div>
   <div class="tab-bar">
-    <div class="tab active" id="tab-episodes" onclick="switchTab('episodes')">🎙 Episodes</div>
-    <div class="tab" id="tab-leaderboard" onclick="switchTab('leaderboard')">🏆 Leaderboard</div>
+    <div class="tab active" id="tab-episodes">🎙 Episodes</div>
+    <div class="tab" id="tab-leaderboard">🏆 Leaderboard</div>
   </div>
   <div id="episodes-tab">
     <div class="main-content">
@@ -166,10 +160,10 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
       <p id="no-episodes" style="display:none;text-align:center;color:#aaa;padding:60px 0;font-size:15px">No episodes yet. Ask your admin to add some!</p>
     </div>
   </div>
-  <div id="leaderboard-tab">
+  <div id="leaderboard-tab" style="display:none">
     <div class="main-content">
       <div class="section-title">Team Leaderboard</div>
-      <div class="section-sub">Live team progress — updates automatically as episodes are completed.</div>
+      <div class="section-sub">Live team progress — updates automatically.</div>
       <div class="stats-grid" id="stats-grid"></div>
       <div class="lb-card">
         <div class="lb-header"><h3>🏆 Team Rankings</h3><span id="lb-subtitle"></span></div>
@@ -179,32 +173,31 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
   </div>
 </div>
 
-<!-- PLAYER -->
 <div id="player-modal">
   <div class="player-card">
     <div class="player-header">
       <h3 id="modal-title"></h3>
-      <button class="close-btn" onclick="closePlayer()">✕</button>
+      <button class="close-btn" id="close-player-btn">✕</button>
     </div>
     <div class="player-body">
       <p class="player-desc" id="modal-desc"></p>
-      <audio id="audio-el" style="display:none"></audio>
+      <audio id="audio-el" playsinline style="display:none"></audio>
       <div class="audio-wrap">
         <div class="audio-controls">
-          <button class="play-pause" id="play-btn" onclick="togglePlay()">
+          <button class="play-pause" id="play-btn">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg>
           </button>
           <div class="time-display" id="time-display">0:00 / 0:00</div>
         </div>
-        <div class="progress-wrap" onclick="return false">
+        <div class="progress-wrap">
           <div class="progress-bar" id="progress-bar"></div>
         </div>
         <div class="no-skip-note">🔒 Fast-forward disabled — please listen in full</div>
       </div>
       <div class="upload-note" id="upload-note"></div>
       <div style="display:flex;gap:10px;margin-top:16px">
-        <button id="download-btn" onclick="downloadEp()" style="flex:1;background:var(--ultra-blue);color:white;border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:none">⬇ Download Episode</button>
-        <button id="manual-complete-btn" onclick="manualComplete()" style="flex:1;background:var(--flow-gray);color:var(--ultra-blue);border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:none">✔ Mark as Complete</button>
+        <button id="download-btn" style="flex:1;background:var(--ultra-blue);color:white;border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:none">⬇ Download</button>
+        <button id="manual-complete-btn" style="flex:1;background:var(--flow-gray);color:var(--ultra-blue);border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;display:none">✔ Mark as Complete</button>
       </div>
       <div class="completion-msg" id="completion-msg">
         <h4>✅ Episode Complete!</h4>
@@ -214,26 +207,24 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
   </div>
 </div>
 
-<!-- ADMIN PW -->
 <div id="admin-pw-modal">
   <div class="pw-card">
     <h3>🔒 Admin Access</h3>
     <p>Enter the admin password to continue.</p>
-    <input id="pw-input" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPw()"/>
+    <input id="pw-input" type="password" placeholder="••••••••"/>
     <div class="pw-error" id="pw-error">Incorrect password. Try again.</div>
     <div class="pw-actions">
-      <button class="btn-cancel" onclick="closeAdminPw()">Cancel</button>
-      <button class="btn-primary" style="flex:1;margin-top:0" onclick="checkPw()">Enter</button>
+      <button class="btn-cancel" id="pw-cancel-btn">Cancel</button>
+      <button class="btn-primary" style="flex:1;margin-top:0" id="pw-submit-btn">Enter</button>
     </div>
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
 <div id="admin-modal">
   <div class="admin-card">
     <div class="admin-hdr">
       <h3>⚙ Admin Panel</h3>
-      <button class="close-btn" onclick="closeAdmin()">✕</button>
+      <button class="close-btn" id="close-admin-btn">✕</button>
     </div>
     <div class="admin-body">
       <h4>🔑 Admin Password</h4>
@@ -241,34 +232,22 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
         <label>Change Admin Password</label>
         <input id="new-pw" type="password" placeholder="Enter new password"/>
       </div>
-      <button class="btn-add" style="background:var(--ultra-blue)" onclick="savePassword()">Save Password</button>
+      <button class="btn-add" style="background:var(--ultra-blue)" id="save-pw-btn">Save Password</button>
       <div class="saved-msg" id="pw-saved">✓ Password updated!</div>
-
       <div class="divider"></div>
       <h4>➕ Add New Episode</h4>
-      <div class="form-row">
-        <label>Episode Title *</label>
-        <input id="ep-title" type="text" placeholder="e.g. Mastering the Discovery Call"/>
-      </div>
-      <div class="form-row">
-        <label>Description</label>
-        <textarea id="ep-desc" placeholder="Brief description of what's covered…"></textarea>
-      </div>
+      <div class="form-row"><label>Episode Title *</label><input id="ep-title" type="text" placeholder="e.g. Mastering the Discovery Call"/></div>
+      <div class="form-row"><label>Description</label><textarea id="ep-desc" placeholder="Brief description…"></textarea></div>
       <div class="form-row">
         <label>Audio URL</label>
         <input id="ep-url" type="url" placeholder="https://..."/>
-        <div class="hint">💡 Dropbox: change ?dl=0 → ?dl=1 &nbsp;|&nbsp; Google Drive: use /uc?export=download&id=FILE_ID</div>
+        <div class="hint">💡 Dropbox: change ?dl=0 → ?dl=1</div>
       </div>
-      <div class="form-row">
-        <label>Duration (e.g. 32 min)</label>
-        <input id="ep-duration" type="text" placeholder="32 min"/>
-      </div>
-      <button class="btn-add" onclick="addEpisode()">Add Episode</button>
-
+      <div class="form-row"><label>Duration (e.g. 32 min)</label><input id="ep-duration" type="text" placeholder="32 min"/></div>
+      <button class="btn-add" id="add-ep-btn">Add Episode</button>
       <div class="divider"></div>
       <h4>🎙 Current Episodes</h4>
       <div id="admin-ep-list"></div>
-
       <div class="divider"></div>
       <h4>✅ Completion Log</h4>
       <div id="completions-list"></div>
@@ -277,21 +256,52 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 </div>
 
 <script>
-const SUPABASE_URL = 'https://rrfmmskzmqmcrqwbocxm.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZm1tc2t6bXFtY3Jxd2JvY3htIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2Mjk3NjYsImV4cCI6MjA5MDIwNTc2Nn0.U2ZF2aP7MNcMZ0NlKwJ00V1kkN3l6GMe9FfwbNEGkdM';
-const { createClient } = supabase;
-const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+// ── Supabase REST API (no library needed) ──────────────────────────
+const SB_URL = 'https://rrfmmskzmqmcrqwbocxm.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZm1tc2t6bXFtY3Jxd2JvY3htIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2Mjk3NjYsImV4cCI6MjA5MDIwNTc2Nn0.U2ZF2aP7MNcMZ0NlKwJ00V1kkN3l6GMe9FfwbNEGkdM';
 
-let listener = '';
-let episodes = [];
-let completions = [];
-let adminPassword = 'flow2025';
-let currentEp = null;
-let maxReached = 0;
-let audioEl, isPlaying = false;
+async function sbGet(table, params='') {
+  const r = await fetch(`${SB_URL}/rest/v1/${table}?${params}`, {
+    headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function sbPost(table, body) {
+  const r = await fetch(`${SB_URL}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) throw new Error(await r.text());
+}
+async function sbDelete(table, col, val) {
+  const r = await fetch(`${SB_URL}/rest/v1/${table}?${col}=eq.${encodeURIComponent(val)}`, {
+    method: 'DELETE',
+    headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+  });
+  if (!r.ok) throw new Error(await r.text());
+}
 
-// Load password from localStorage
-adminPassword = localStorage.getItem('flow_admin_pw') || 'flow2025';
+// ── State ──────────────────────────────────────────────────────────
+let listener = localStorage.getItem('flow_listener') || '';
+let adminPassword = localStorage.getItem('flow_admin_pw') || 'flow2025';
+let episodes = [], completions = [], currentEp = null, maxReached = 0;
+let audioEl = document.getElementById('audio-el'), isPlaying = false;
+
+// ── Data ───────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    [episodes, completions] = await Promise.all([
+      sbGet('episodes', 'order=created_at.asc'),
+      sbGet('completions', 'order=completed_at.desc')
+    ]);
+  } catch(e) { console.error('DB error:', e); }
+}
+
+// ── Gate ───────────────────────────────────────────────────────────
+document.getElementById('enter-btn').addEventListener('click', startListening);
+document.getElementById('listener-name').addEventListener('keydown', e => { if(e.key==='Enter') startListening(); });
 
 async function startListening() {
   const v = document.getElementById('listener-name').value.trim();
@@ -300,15 +310,12 @@ async function startListening() {
   localStorage.setItem('flow_listener', listener);
   await showApp();
 }
-
 function logout() {
-  listener = '';
-  localStorage.removeItem('flow_listener');
+  listener = ''; localStorage.removeItem('flow_listener');
   document.getElementById('app').style.display = 'none';
   document.getElementById('gate').style.display = 'flex';
   document.getElementById('listener-name').value = '';
 }
-
 async function showApp() {
   document.getElementById('gate').style.display = 'none';
   document.getElementById('app').style.display = 'block';
@@ -317,32 +324,28 @@ async function showApp() {
   renderEpisodes();
 }
 
-async function loadData() {
-  try {
-    const [epRes, compRes] = await Promise.all([
-      sb.from('episodes').select('*').order('created_at', { ascending: true }),
-      sb.from('completions').select('*').order('completed_at', { ascending: false })
-    ]);
-    if (epRes.error) { console.error('Episodes error:', epRes.error); alert('DB Error (episodes): ' + epRes.error.message); return; }
-    if (compRes.error) { console.error('Completions error:', compRes.error); alert('DB Error (completions): ' + compRes.error.message); return; }
-    episodes = epRes.data || [];
-    completions = compRes.data || [];
-    console.log('Loaded episodes:', episodes.length, 'completions:', completions.length);
-  } catch(e) {
-    console.error('Load error:', e);
-    alert('Connection error: ' + e.message);
-  }
+document.getElementById('logout-btn').addEventListener('click', logout);
+
+// ── Tabs ───────────────────────────────────────────────────────────
+document.getElementById('tab-episodes').addEventListener('click', () => switchTab('episodes'));
+document.getElementById('tab-leaderboard').addEventListener('click', () => switchTab('leaderboard'));
+function switchTab(t) {
+  document.getElementById('tab-episodes').classList.toggle('active', t==='episodes');
+  document.getElementById('tab-leaderboard').classList.toggle('active', t==='leaderboard');
+  document.getElementById('episodes-tab').style.display = t==='episodes' ? 'block' : 'none';
+  document.getElementById('leaderboard-tab').style.display = t==='leaderboard' ? 'block' : 'none';
+  if (t==='leaderboard') renderLeaderboard();
 }
 
+// ── Episodes ───────────────────────────────────────────────────────
 function renderEpisodes() {
   const grid = document.getElementById('episode-grid');
   const noEp = document.getElementById('no-episodes');
   grid.innerHTML = '';
-  const myComp = completions.filter(c => c.listener === listener).map(c => c.ep_id);
-  const total = episodes.length;
-  const done = episodes.filter(e => myComp.includes(e.id)).length;
-  document.getElementById('progress-summary').textContent = total ? `${done} of ${total} episode${total !== 1 ? 's' : ''} completed` : '';
-  if (!total) { noEp.style.display = 'block'; return; }
+  const myComp = completions.filter(c => c.listener===listener).map(c => c.ep_id);
+  const total = episodes.length, done = episodes.filter(e => myComp.includes(e.id)).length;
+  document.getElementById('progress-summary').textContent = total ? `${done} of ${total} episode${total!==1?'s':''} completed` : '';
+  if (!total) { noEp.style.display='block'; return; }
   noEp.style.display = 'none';
   episodes.forEach((ep, i) => {
     const isDone = myComp.includes(ep.id);
@@ -350,7 +353,7 @@ function renderEpisodes() {
     c.className = 'ep-card ' + (isDone ? 'completed' : 'locked');
     c.innerHTML = `
       <div class="ep-thumb">
-        <span class="ep-num">0${i + 1}</span>
+        <span class="ep-num">0${i+1}</span>
         <div class="play-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg></div>
         ${isDone ? '<span class="done-badge">✓ Done</span>' : ''}
       </div>
@@ -362,50 +365,38 @@ function renderEpisodes() {
           <span>${isDone ? '✅ Completed' : '🎧 Not started'}</span>
         </div>
       </div>`;
-    c.onclick = () => openPlayer(ep);
+    c.addEventListener('click', () => openPlayer(ep));
     grid.appendChild(c);
   });
 }
 
+// ── Leaderboard ────────────────────────────────────────────────────
 async function renderLeaderboard() {
   await loadData();
   const total = episodes.length;
-  const listeners = {};
-  completions.forEach(c => {
-    if (!listeners[c.listener]) listeners[c.listener] = { name: c.listener, count: 0 };
-    listeners[c.listener].count++;
-  });
-  const rows = Object.values(listeners).sort((a, b) => b.count - a.count);
-  const totalListeners = rows.length;
-  const totalCompletions = completions.length;
-  const avgPct = totalListeners ? Math.round(rows.reduce((s, r) => s + (r.count / Math.max(total, 1) * 100), 0) / totalListeners) : 0;
+  const map = {};
+  completions.forEach(c => { if(!map[c.listener]) map[c.listener]={name:c.listener,count:0}; map[c.listener].count++; });
+  const rows = Object.values(map).sort((a,b) => b.count-a.count);
+  const avgPct = rows.length ? Math.round(rows.reduce((s,r)=>s+(r.count/Math.max(total,1)*100),0)/rows.length) : 0;
   document.getElementById('stats-grid').innerHTML = `
-    <div class="stat-card"><div class="num">${totalListeners}</div><div class="lbl">Active Listeners</div></div>
-    <div class="stat-card green"><div class="num">${totalCompletions}</div><div class="lbl">Total Completions</div></div>
+    <div class="stat-card"><div class="num">${rows.length}</div><div class="lbl">Active Listeners</div></div>
+    <div class="stat-card green"><div class="num">${completions.length}</div><div class="lbl">Total Completions</div></div>
     <div class="stat-card blue"><div class="num">${total}</div><div class="lbl">Episodes Available</div></div>
     <div class="stat-card"><div class="num">${avgPct}%</div><div class="lbl">Avg Completion Rate</div></div>`;
-  document.getElementById('lb-subtitle').textContent = `${total} episode${total !== 1 ? 's' : ''} total`;
+  document.getElementById('lb-subtitle').textContent = `${total} episode${total!==1?'s':''} total`;
   const lbRows = document.getElementById('lb-rows');
-  if (!rows.length) { lbRows.innerHTML = '<div class="lb-empty">No completions recorded yet. Get your team listening!</div>'; return; }
-  const medals = ['🥇', '🥈', '🥉'];
-  const rankClass = ['gold', 'silver', 'bronze'];
-  lbRows.innerHTML = rows.map((r, i) => `
+  if (!rows.length) { lbRows.innerHTML='<div class="lb-empty">No completions yet. Get your team listening!</div>'; return; }
+  const medals=['🥇','🥈','🥉'], rankClass=['gold','silver','bronze'];
+  lbRows.innerHTML = rows.map((r,i) => `
     <div class="lb-row">
-      <div class="lb-rank ${rankClass[i] || ''}">${medals[i] || '#' + (i + 1)}</div>
-      <div class="lb-name">${r.name}${r.name === listener ? ' <span style="color:var(--vital-green);font-size:11px">(you)</span>' : ''}</div>
-      <div class="lb-bar-wrap"><div class="lb-bar" style="width:${total ? Math.round(r.count / total * 100) : 0}%"></div></div>
+      <div class="lb-rank ${rankClass[i]||''}">${medals[i]||'#'+(i+1)}</div>
+      <div class="lb-name">${r.name}${r.name===listener?' <span style="color:var(--vital-green);font-size:11px">(you)</span>':''}</div>
+      <div class="lb-bar-wrap"><div class="lb-bar" style="width:${total?Math.round(r.count/total*100):0}%"></div></div>
       <div class="lb-count">${r.count} / ${total}</div>
     </div>`).join('');
 }
 
-function switchTab(t) {
-  document.getElementById('tab-episodes').classList.toggle('active', t === 'episodes');
-  document.getElementById('tab-leaderboard').classList.toggle('active', t === 'leaderboard');
-  document.getElementById('episodes-tab').style.display = t === 'episodes' ? 'block' : 'none';
-  document.getElementById('leaderboard-tab').style.display = t === 'leaderboard' ? 'block' : 'none';
-  if (t === 'leaderboard') renderLeaderboard();
-}
-
+// ── Player ─────────────────────────────────────────────────────────
 function openPlayer(ep) {
   currentEp = ep; maxReached = 0;
   document.getElementById('modal-title').textContent = ep.title;
@@ -414,179 +405,152 @@ function openPlayer(ep) {
   document.getElementById('progress-bar').style.width = '0%';
   document.getElementById('progress-bar').classList.remove('done');
   document.getElementById('time-display').textContent = '0:00 / 0:00';
-  audioEl = document.getElementById('audio-el');
+  document.getElementById('upload-note').textContent = '';
   audioEl.pause(); audioEl.src = ''; isPlaying = false; updatePlayBtn(false);
+  const already = completions.find(c => c.listener===listener && c.ep_id===ep.id);
   if (ep.audio_url) {
     audioEl.src = ep.audio_url; audioEl.load(); setupAudio();
-    document.getElementById('upload-note').textContent = '';
     document.getElementById('download-btn').style.display = 'block';
   } else {
     document.getElementById('upload-note').textContent = '⚠ No audio URL set for this episode yet.';
     document.getElementById('download-btn').style.display = 'none';
   }
-  // Show manual complete if not already done
-  const already = completions.find(c => c.listener === listener && c.ep_id === ep.id);
   document.getElementById('manual-complete-btn').style.display = already ? 'none' : 'block';
   if (already) document.getElementById('completion-msg').style.display = 'block';
   document.getElementById('player-modal').classList.add('open');
 }
 
 function setupAudio() {
-  // Mobile: remove old listeners by cloning
-  const newAudio = audioEl.cloneNode(true);
-  audioEl.parentNode.replaceChild(newAudio, audioEl);
-  audioEl = newAudio;
-  audioEl.src = currentEp.audio_url;
-  audioEl.preload = 'metadata';
-  audioEl.controls = false;
-  audioEl.playsInline = true; // critical for iOS
-
   audioEl.ontimeupdate = () => {
-    const cur = audioEl.currentTime, dur = audioEl.duration || 0;
-    if (cur > maxReached + 1.5) { audioEl.currentTime = maxReached; return; }
-    if (cur > maxReached) maxReached = cur;
-    const pct = dur ? (cur / dur) * 100 : 0;
-    document.getElementById('progress-bar').style.width = pct + '%';
-    document.getElementById('time-display').textContent = fmt(cur) + ' / ' + fmt(dur);
-    if (pct >= 97) markComplete();
+    const cur=audioEl.currentTime, dur=audioEl.duration||0;
+    if (cur > maxReached+1.5) { audioEl.currentTime=maxReached; return; }
+    if (cur > maxReached) maxReached=cur;
+    const pct = dur?(cur/dur)*100:0;
+    document.getElementById('progress-bar').style.width = pct+'%';
+    document.getElementById('time-display').textContent = fmt(cur)+' / '+fmt(dur);
+    if (pct>=97) markComplete();
   };
-  audioEl.onended = () => { isPlaying = false; updatePlayBtn(false); markComplete(); };
-  audioEl.onplay = () => { isPlaying = true; updatePlayBtn(true); };
-  audioEl.onpause = () => { isPlaying = false; updatePlayBtn(false); };
-  audioEl.onerror = () => {
-    document.getElementById('upload-note').textContent = '⚠ Unable to load audio. Check the URL or try a different host.';
-    updatePlayBtn(false); isPlaying = false;
-  };
+  audioEl.onended = () => { isPlaying=false; updatePlayBtn(false); markComplete(); };
+  audioEl.onplay = () => { isPlaying=true; updatePlayBtn(true); };
+  audioEl.onpause = () => { isPlaying=false; updatePlayBtn(false); };
+  audioEl.onerror = () => { document.getElementById('upload-note').textContent='⚠ Unable to load audio. Check the URL.'; };
 }
 
-function togglePlay() {
-  if (!audioEl || !audioEl.src) return;
-  if (isPlaying) {
-    audioEl.pause();
-  } else {
-    // Mobile requires play() called directly from user gesture
-    const p = audioEl.play();
-    if (p !== undefined) {
-      p.catch(e => {
-        document.getElementById('upload-note').textContent = '⚠ Tap play again — your browser requires a direct tap to start audio.';
-      });
-    }
+document.getElementById('play-btn').addEventListener('click', () => {
+  if (!audioEl.src) return;
+  if (isPlaying) { audioEl.pause(); }
+  else { audioEl.play().catch(()=>{ document.getElementById('upload-note').textContent='Tap play again to start audio.'; }); }
+});
+document.getElementById('close-player-btn').addEventListener('click', closePlayer);
+document.getElementById('download-btn').addEventListener('click', () => {
+  if (!currentEp?.audio_url) return;
+  const a=document.createElement('a'); a.href=currentEp.audio_url; a.download=currentEp.title+'.mp3'; a.target='_blank'; a.click();
+});
+document.getElementById('manual-complete-btn').addEventListener('click', () => {
+  if (confirm('Mark "'+currentEp.title+'" as complete? Only do this if you have listened to the full episode.')) {
+    markComplete(); document.getElementById('manual-complete-btn').style.display='none';
   }
-}
+});
 
-function togglePlay() { if (!audioEl || !audioEl.src) return; isPlaying ? audioEl.pause() : audioEl.play(); }
+function closePlayer() { audioEl.pause(); document.getElementById('player-modal').classList.remove('open'); }
 function updatePlayBtn(p) {
   document.getElementById('play-btn').innerHTML = p
     ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="white"><rect x="1" y="1" width="4" height="12"/><rect x="9" y="1" width="4" height="12"/></svg>'
     : '<svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg>';
 }
-function fmt(s) { if (!s || isNaN(s)) return '0:00'; return Math.floor(s / 60) + ':' + (Math.floor(s % 60) < 10 ? '0' : '') + Math.floor(s % 60); }
-function closePlayer() { if (audioEl) audioEl.pause(); document.getElementById('player-modal').classList.remove('open'); }
+function fmt(s) { if(!s||isNaN(s))return'0:00'; return Math.floor(s/60)+':'+(Math.floor(s%60)<10?'0':'')+Math.floor(s%60); }
 
 async function markComplete() {
   if (!currentEp) return;
-  const already = completions.find(c => c.listener === listener && c.ep_id === currentEp.id);
-  if (already) return;
-  const { error } = await sb.from('completions').insert({ listener, ep_id: currentEp.id, ep_title: currentEp.title });
-  if (!error) {
+  if (completions.find(c=>c.listener===listener&&c.ep_id===currentEp.id)) return;
+  try {
+    await sbPost('completions', { listener, ep_id: currentEp.id, ep_title: currentEp.title });
     completions.unshift({ listener, ep_id: currentEp.id, ep_title: currentEp.title, completed_at: new Date().toISOString() });
     document.getElementById('progress-bar').classList.add('done');
     document.getElementById('completion-msg').style.display = 'block';
+    document.getElementById('manual-complete-btn').style.display = 'none';
     renderEpisodes();
-  }
+  } catch(e) { console.error('Complete error:', e); }
 }
 
-// ADMIN
+// ── Admin ──────────────────────────────────────────────────────────
+document.getElementById('admin-open-btn').addEventListener('click', promptAdmin);
+document.getElementById('pw-cancel-btn').addEventListener('click', () => document.getElementById('admin-pw-modal').classList.remove('open'));
+document.getElementById('pw-submit-btn').addEventListener('click', checkPw);
+document.getElementById('pw-input').addEventListener('keydown', e => { if(e.key==='Enter') checkPw(); });
+document.getElementById('close-admin-btn').addEventListener('click', () => document.getElementById('admin-modal').classList.remove('open'));
+document.getElementById('save-pw-btn').addEventListener('click', savePassword);
+document.getElementById('add-ep-btn').addEventListener('click', addEpisode);
+
 function promptAdmin() {
-  document.getElementById('pw-input').value = '';
-  document.getElementById('pw-error').style.display = 'none';
+  document.getElementById('pw-input').value='';
+  document.getElementById('pw-error').style.display='none';
   document.getElementById('admin-pw-modal').classList.add('open');
-  setTimeout(() => document.getElementById('pw-input').focus(), 100);
+  setTimeout(()=>document.getElementById('pw-input').focus(),100);
 }
-function closeAdminPw() { document.getElementById('admin-pw-modal').classList.remove('open'); }
 function checkPw() {
-  if (document.getElementById('pw-input').value === adminPassword) { closeAdminPw(); openAdmin(); }
-  else { document.getElementById('pw-error').style.display = 'block'; document.getElementById('pw-input').value = ''; }
+  if (document.getElementById('pw-input').value===adminPassword) {
+    document.getElementById('admin-pw-modal').classList.remove('open');
+    openAdmin();
+  } else {
+    document.getElementById('pw-error').style.display='block';
+    document.getElementById('pw-input').value='';
+  }
 }
 async function openAdmin() {
-  document.getElementById('new-pw').value = '';
+  document.getElementById('new-pw').value='';
   document.getElementById('admin-modal').classList.add('open');
   await loadData();
   renderAdminList();
   renderAdminCompletions();
 }
-function closeAdmin() { document.getElementById('admin-modal').classList.remove('open'); }
 function savePassword() {
-  const p = document.getElementById('new-pw').value.trim();
-  if (!p) { alert('Please enter a password.'); return; }
-  adminPassword = p;
-  localStorage.setItem('flow_admin_pw', p);
-  flash('pw-saved');
+  const p=document.getElementById('new-pw').value.trim();
+  if(!p){alert('Please enter a password.');return;}
+  adminPassword=p; localStorage.setItem('flow_admin_pw',p); flash('pw-saved');
 }
-
 async function addEpisode() {
-  const title = document.getElementById('ep-title').value.trim();
-  if (!title) { alert('Please enter a title.'); return; }
-  const ep = { id: Date.now().toString(), title, description: document.getElementById('ep-desc').value.trim(), duration: document.getElementById('ep-duration').value.trim(), audio_url: document.getElementById('ep-url').value.trim() || null };
-  const { error } = await sb.from('episodes').insert(ep);
-  if (error) { alert('Error saving episode: ' + error.message); return; }
-  episodes.push(ep);
-  ['ep-title', 'ep-desc', 'ep-duration', 'ep-url'].forEach(id => document.getElementById(id).value = '');
-  renderAdminList();
-  renderEpisodes();
+  const title=document.getElementById('ep-title').value.trim();
+  if(!title){alert('Please enter a title.');return;}
+  const ep={id:Date.now().toString(),title,description:document.getElementById('ep-desc').value.trim(),duration:document.getElementById('ep-duration').value.trim(),audio_url:document.getElementById('ep-url').value.trim()||null};
+  try {
+    await sbPost('episodes', ep);
+    episodes.push(ep);
+    ['ep-title','ep-desc','ep-duration','ep-url'].forEach(id=>document.getElementById(id).value='');
+    renderAdminList(); renderEpisodes();
+  } catch(e) { alert('Error saving episode: '+e.message); }
 }
-
 async function deleteEpisode(id) {
-  if (!confirm('Delete this episode?')) return;
-  await sb.from('episodes').delete().eq('id', id);
-  await sb.from('completions').delete().eq('ep_id', id);
-  episodes = episodes.filter(e => e.id !== id);
-  completions = completions.filter(c => c.ep_id !== id);
-  renderAdminList();
-  renderEpisodes();
+  if(!confirm('Delete this episode?'))return;
+  try {
+    await Promise.all([sbDelete('episodes','id',id), sbDelete('completions','ep_id',id)]);
+    episodes=episodes.filter(e=>e.id!==id);
+    completions=completions.filter(c=>c.ep_id!==id);
+    renderAdminList(); renderEpisodes();
+  } catch(e) { alert('Error deleting: '+e.message); }
 }
-
 function renderAdminList() {
-  const el = document.getElementById('admin-ep-list');
-  if (!episodes.length) { el.innerHTML = '<p style="font-size:13px;color:#aaa">No episodes yet.</p>'; return; }
-  el.innerHTML = episodes.map(ep => `
+  const el=document.getElementById('admin-ep-list');
+  if(!episodes.length){el.innerHTML='<p style="font-size:13px;color:#aaa">No episodes yet.</p>';return;}
+  el.innerHTML=episodes.map(ep=>`
     <div class="admin-ep-item">
-      <div><strong>${ep.title}</strong><br><span style="color:#888;font-size:11px">${ep.audio_url ? '🔗 URL linked' : '⚠ No audio'}${ep.duration ? ' · ' + ep.duration : ''}</span></div>
+      <div><strong>${ep.title}</strong><br><span style="color:#888;font-size:11px">${ep.audio_url?'🔗 URL linked':'⚠ No audio'}${ep.duration?' · '+ep.duration:''}</span></div>
       <button class="del-btn" onclick="deleteEpisode('${ep.id}')">🗑</button>
     </div>`).join('');
 }
-
 function renderAdminCompletions() {
-  const el = document.getElementById('completions-list');
-  if (!completions.length) { el.innerHTML = '<p style="font-size:13px;color:#aaa;text-align:center;padding:12px">No completions yet.</p>'; return; }
-  el.innerHTML = completions.slice(0, 50).map(c => `
+  const el=document.getElementById('completions-list');
+  if(!completions.length){el.innerHTML='<p style="font-size:13px;color:#aaa;text-align:center;padding:12px">No completions yet.</p>';return;}
+  el.innerHTML=completions.slice(0,50).map(c=>`
     <div class="comp-item">
       <div class="comp-dot"></div>
       <div><strong>${c.listener}</strong> completed <em>${c.ep_title}</em><br><span style="color:#aaa;font-size:11px">${new Date(c.completed_at).toLocaleString()}</span></div>
     </div>`).join('');
 }
+function flash(id){const el=document.getElementById(id);el.style.display='block';setTimeout(()=>el.style.display='none',2000);}
 
-function downloadEp() {
-  if (!currentEp || !currentEp.audio_url) return;
-  const a = document.createElement('a');
-  a.href = currentEp.audio_url;
-  a.download = currentEp.title + '.mp3';
-  a.target = '_blank';
-  a.click();
-}
-
-function manualComplete() {
-  if (confirm('Mark "' + currentEp.title + '" as complete? Only do this if you have listened to the full episode.')) {
-    markComplete();
-    document.getElementById('manual-complete-btn').style.display = 'none';
-  }
-}
-
- const el = document.getElementById(id); el.style.display = 'block'; setTimeout(() => el.style.display = 'none', 2000); }
-
-// Init
-const saved = localStorage.getItem('flow_listener');
-if (saved) { listener = saved; showApp(); }
+// ── Init ───────────────────────────────────────────────────────────
+if (listener) showApp();
 </script>
 </body>
 </html>
