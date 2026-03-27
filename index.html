@@ -279,8 +279,9 @@ const api = {
 };
 
 let email='', pw=localStorage.getItem('flow_pw')||'flow2025';
-let episodes=[], completions=[], activity=[], currentEp=null, maxT=0;
+let episodes=[], completions=[], activity=[], progress=[], currentEp=null, maxT=0;
 let aud=document.getElementById('audio-el'), playing=false, activeF='all';
+let saveTimer=null;
 
 // ── Gate ──────────────────────────────────────────────────────────
 document.getElementById('enter-btn').onclick = go;
@@ -303,10 +304,11 @@ async function boot() {
     document.getElementById('gate').style.display='none';
     document.getElementById('app').style.display='block';
     document.getElementById('display-name').textContent=email;
-    [episodes, completions, activity] = await Promise.all([
+    [episodes, completions, activity, progress] = await Promise.all([
       api.get('episodes','order=created_at.asc'),
       api.get('completions','order=completed_at.desc'),
-      api.get('activity_log','order=created_at.desc')
+      api.get('activity_log','order=created_at.desc'),
+      api.get('playback_progress',`listener=eq.${encodeURIComponent(email)}`)
     ]);
   } catch(e) {
     episodes=episodes||[]; completions=completions||[]; activity=activity||[];
@@ -350,7 +352,7 @@ function renderEpisodes() {
 
 // ── Player ────────────────────────────────────────────────────────
 function openPlayer(ep) {
-  currentEp=ep; maxT=0;
+  currentEp=ep; maxT=0; saveTimer=null;
   document.getElementById('modal-title').textContent=ep.title;
   document.getElementById('modal-desc').textContent=ep.description||'';
   document.getElementById('done-msg').style.display='none';
@@ -366,6 +368,16 @@ function openPlayer(ep) {
   document.getElementById('player-modal').classList.add('open');
 }
 function bindAudio() {
+  // Resume from saved position
+  const saved = progress.find(p=>p.ep_id===currentEp.id);
+  if(saved && saved.position > 5) {
+    aud.addEventListener('loadedmetadata', ()=>{
+      aud.currentTime = saved.position;
+      maxT = saved.position;
+      document.getElementById('audio-note').textContent = `▶ Resuming from ${ft(saved.position)}`;
+      setTimeout(()=>document.getElementById('audio-note').textContent='', 3000);
+    }, {once:true});
+  }
   aud.ontimeupdate = () => {
     const c=aud.currentTime, d=aud.duration||0;
     if(c>maxT+1.5){aud.currentTime=maxT;return;}
@@ -374,11 +386,27 @@ function bindAudio() {
     document.getElementById('prog-bar').style.width=p+'%';
     document.getElementById('time-txt').textContent=ft(c)+' / '+ft(d);
     if(p>=97) doComplete();
+    // Save progress every 10 seconds
+    if(!saveTimer) saveTimer=setTimeout(()=>{ saveProgress(c); saveTimer=null; }, 10000);
   };
   aud.onended=()=>{playing=false;setPBtn(false);doComplete();};
   aud.onplay=()=>{playing=true;setPBtn(true);};
-  aud.onpause=()=>{playing=false;setPBtn(false);};
+  aud.onpause=()=>{playing=false;setPBtn(false);saveProgress(aud.currentTime);};
   aud.onerror=()=>{document.getElementById('audio-note').textContent='⚠ Could not load audio. Check the URL.';};
+}
+
+async function saveProgress(pos) {
+  if(!currentEp||!email) return;
+  try {
+    await fetch(`${SB}/rest/v1/playback_progress`, {
+      method:'POST',
+      headers:{...H,'Prefer':'resolution=merge-duplicates'},
+      body:JSON.stringify({listener:email, ep_id:currentEp.id, position:Math.floor(pos), updated_at:new Date().toISOString()})
+    });
+    const i=progress.findIndex(p=>p.ep_id===currentEp.id);
+    if(i>=0) progress[i].position=Math.floor(pos);
+    else progress.push({listener:email,ep_id:currentEp.id,position:Math.floor(pos)});
+  } catch(e){console.error('Progress save error:',e);}
 }
 document.getElementById('play-btn').onclick = () => {
   if(!aud.src)return;
