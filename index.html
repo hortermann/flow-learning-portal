@@ -398,17 +398,22 @@ function bindAudio() {
 }
 
 async function saveProgress(pos) {
-  if(!currentEp||!email) return;
+  if(!currentEp||!email||pos<5) return;
   try {
-    await fetch(`${SB}/rest/v1/playback_progress`, {
+    const res = await fetch(`${SB}/rest/v1/playback_progress`, {
       method:'POST',
       headers:{...H,'Prefer':'resolution=merge-duplicates'},
       body:JSON.stringify({listener:email, ep_id:currentEp.id, position:Math.floor(pos), updated_at:new Date().toISOString()})
     });
+    if(!res.ok) { console.error('Save failed:',await res.text()); return; }
+    // Update local cache
     const i=progress.findIndex(p=>p.ep_id===currentEp.id);
     if(i>=0) progress[i].position=Math.floor(pos);
     else progress.push({listener:email,ep_id:currentEp.id,position:Math.floor(pos)});
-  } catch(e){console.error('Progress save error:',e);}
+    console.log('✅ Progress saved:',Math.floor(pos),'sec for',currentEp.title);
+    document.getElementById('audio-note').textContent=`💾 Progress saved at ${ft(pos)}`;
+    setTimeout(()=>document.getElementById('audio-note').textContent='',2000);
+  } catch(e){ console.error('Progress save error:',e); }
 }
 document.getElementById('play-btn').onclick = () => {
   if(!aud.src)return;
