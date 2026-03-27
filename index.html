@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Flow Service Partners – Learning Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ultra-blue:#0A2240;--sky-blue:#87B7E8;--vital-green:#00C08B;--flow-gray:#D6DBE0;--white:#fff}
@@ -279,7 +279,8 @@ header h2{color:var(--sky-blue);font-size:13px;font-weight:700;letter-spacing:2p
 <script>
 const SUPABASE_URL = 'https://rrfmmskzmqmcrqwbocxm.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZm1tc2t6bXFtY3Jxd2JvY3htIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2Mjk3NjYsImV4cCI6MjA5MDIwNTc2Nn0.U2ZF2aP7MNcMZ0NlKwJ00V1kkN3l6GMe9FfwbNEGkdM';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const { createClient } = supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let listener = '';
 let episodes = [];
@@ -317,12 +318,20 @@ async function showApp() {
 }
 
 async function loadData() {
-  const [epRes, compRes] = await Promise.all([
-    sb.from('episodes').select('*').order('created_at', { ascending: true }),
-    sb.from('completions').select('*').order('completed_at', { ascending: false })
-  ]);
-  episodes = epRes.data || [];
-  completions = compRes.data || [];
+  try {
+    const [epRes, compRes] = await Promise.all([
+      sb.from('episodes').select('*').order('created_at', { ascending: true }),
+      sb.from('completions').select('*').order('completed_at', { ascending: false })
+    ]);
+    if (epRes.error) { console.error('Episodes error:', epRes.error); alert('DB Error (episodes): ' + epRes.error.message); return; }
+    if (compRes.error) { console.error('Completions error:', compRes.error); alert('DB Error (completions): ' + compRes.error.message); return; }
+    episodes = epRes.data || [];
+    completions = compRes.data || [];
+    console.log('Loaded episodes:', episodes.length, 'completions:', completions.length);
+  } catch(e) {
+    console.error('Load error:', e);
+    alert('Connection error: ' + e.message);
+  }
 }
 
 function renderEpisodes() {
