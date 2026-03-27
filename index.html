@@ -326,22 +326,24 @@ function renderEpisodes() {
   document.getElementById('no-episodes').style.display = total?'none':'block';
   episodes.forEach((ep,i) => {
     const listened = mine.includes(ep.id);
+    const saved = progress.find(p=>p.ep_id===ep.id);
+    const hasProgress = saved && saved.position > 5 && !listened;
     const d = document.createElement('div');
     d.className = 'ep-card'+(listened?' listened':'');
     d.innerHTML = `
       <div class="ep-thumb">
         <span class="ep-num">0${i+1}</span>
         <div class="ep-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg></div>
-        ${listened?'<span class="listened-badge">✓ Listened</span>':''}
+        ${listened?'<span class="listened-badge">✓ Listened</span>':hasProgress?`<span class="listened-badge" style="background:var(--sky-blue)">⏸ ${ft(saved.position)}</span>`:''}
       </div>
       <div class="ep-body">
         <h3>${ep.title}</h3>
         <p>${ep.description||'Click play to listen to this episode.'}</p>
         <div class="ep-actions">
-          <button class="btn-play" data-id="${ep.id}">▶ Play</button>
+          <button class="btn-play" data-id="${ep.id}">${hasProgress?'▶ Resume':'▶ Play'}</button>
           ${ep.audio_url?`<button class="btn-dl" data-id="${ep.id}">⬇ Download</button>`:''}
         </div>
-        ${ep.duration?`<div class="ep-meta">⏱ ${ep.duration}</div>`:''}
+        ${ep.duration?`<div class="ep-meta">⏱ ${ep.duration}${hasProgress?` · <span style="color:var(--sky-blue)">Paused at ${ft(saved.position)}</span>`:''}${listened?` · <span style="color:var(--vital-green)">✅ Complete</span>`:''}</div>`:''}
       </div>`;
     d.querySelector('.btn-play').onclick = () => openPlayer(ep);
     const dlBtn = d.querySelector('.btn-dl');
