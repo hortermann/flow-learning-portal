@@ -197,6 +197,18 @@ audio{display:none}
   </div>
 </div>
 
+<!-- PDF MODAL -->
+<div id="pdf-modal">
+  <div class="pdf-card">
+    <div class="pdf-hdr">
+      <h3 id="pdf-title">PDF Companion</h3>
+      <a id="pdf-dl-btn" href="#" target="_blank" class="btn-pdf-dl">⬇ Download PDF</a>
+      <button class="close-btn" id="close-pdf">✕</button>
+    </div>
+    <iframe class="pdf-frame" id="pdf-frame" src=""></iframe>
+  </div>
+</div>
+
 <!-- ADMIN PW -->
 <div id="pw-modal">
   <div class="pw-card">
@@ -242,6 +254,11 @@ audio{display:none}
           <div class="hint">💡 Dropbox: change ?dl=0 → ?dl=1 at end of link</div>
         </div>
         <div class="form-row"><label>Duration</label><input id="ep-duration" type="text" placeholder="e.g. 32 min"/></div>
+        <div class="form-row">
+          <label>PDF Companion URL (optional)</label>
+          <input id="ep-pdf" type="url" placeholder="https://res.cloudinary.com/..."/>
+          <div class="hint">💡 Upload PDF to Cloudinary and paste the URL here</div>
+        </div>
         <button class="btn-save" id="add-ep-btn">Add Episode</button>
       </div>
 
@@ -341,13 +358,16 @@ function renderEpisodes() {
         <p>${ep.description||'Click play to listen to this episode.'}</p>
         <div class="ep-actions">
           <button class="btn-play" data-id="${ep.id}">${hasProgress?'▶ Resume':'▶ Play'}</button>
-          ${ep.audio_url?`<button class="btn-dl" data-id="${ep.id}">⬇ Download</button>`:''}
+          ${ep.audio_url?`<button class="btn-dl" data-id="${ep.id}">⬇ Audio</button>`:''}
+          ${ep.pdf_url?`<button class="btn-pdf" data-id="${ep.id}" style="flex:1;background:#e8f4fd;color:#1a7ab5;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer">📄 PDF</button>`:''}
         </div>
         ${ep.duration?`<div class="ep-meta">⏱ ${ep.duration}${hasProgress?` · <span style="color:var(--sky-blue)">Paused at ${ft(saved.position)}</span>`:''}${listened?` · <span style="color:var(--vital-green)">✅ Complete</span>`:''}</div>`:''}
       </div>`;
     d.querySelector('.btn-play').onclick = () => openPlayer(ep);
     const dlBtn = d.querySelector('.btn-dl');
     if(dlBtn) dlBtn.onclick = () => downloadEp(ep);
+    const pdfBtn = d.querySelector('.btn-pdf');
+    if(pdfBtn) pdfBtn.onclick = () => openPdf(ep);
     g.appendChild(d);
   });
 }
@@ -492,11 +512,11 @@ document.getElementById('add-ep-btn').onclick = addEp;
 async function addEp() {
   const title=document.getElementById('ep-title').value.trim();
   if(!title){alert('Title is required.');return;}
-  const ep={id:Date.now().toString(),title,description:document.getElementById('ep-desc').value.trim(),duration:document.getElementById('ep-duration').value.trim(),audio_url:document.getElementById('ep-url').value.trim()||null};
+  const ep={id:Date.now().toString(),title,description:document.getElementById('ep-desc').value.trim(),duration:document.getElementById('ep-duration').value.trim(),audio_url:document.getElementById('ep-url').value.trim()||null,pdf_url:document.getElementById('ep-pdf').value.trim()||null};
   try{
     await api.post('episodes',ep);
     episodes.push(ep);
-    ['ep-title','ep-desc','ep-duration','ep-url'].forEach(i=>document.getElementById(i).value='');
+    ['ep-title','ep-desc','ep-duration','ep-url','ep-pdf'].forEach(i=>document.getElementById(i).value='');
     renderAdminEps();renderEpisodes();
   }catch(e){alert('Error: '+e.message);}
 }
