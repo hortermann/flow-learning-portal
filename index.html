@@ -359,7 +359,7 @@ function renderEpisodes() {
         <div class="ep-actions">
           <button class="btn-play" data-id="${ep.id}">${hasProgress?'▶ Resume':'▶ Play'}</button>
           ${ep.audio_url?`<button class="btn-dl" data-id="${ep.id}">⬇ Audio</button>`:''}
-          ${ep.pdf_url?`<button style="flex:1;background:#e8f4fd;color:#1a7ab5;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer" onclick="window.open('https://docs.google.com/viewer?url=' + encodeURIComponent('${ep.pdf_url}'), '_blank')">📄 PDF</button>`:''}
+          ${ep.pdf_url?`<button style="flex:1;background:#e8f4fd;color:#1a7ab5;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer" onclick="window.open('${ep.pdf_url}','_blank')">📄 PDF</button>`:''}
         </div>
         ${ep.duration?`<div class="ep-meta">⏱ ${ep.duration}${hasProgress?` · <span style="color:var(--sky-blue)">Paused at ${ft(saved.position)}</span>`:''}${listened?` · <span style="color:var(--vital-green)">✅ Complete</span>`:''}</div>`:''}
       </div>`;
