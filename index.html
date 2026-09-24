@@ -186,7 +186,6 @@ audio{display:none}
           <span class="time-txt" id="time-txt">0:00 / 0:00</span>
         </div>
         <div class="prog-wrap"><div class="prog-bar" id="prog-bar"></div></div>
-        <div class="lock-note">🔒 Fast-forward disabled</div>
       </div>
       <div class="audio-note" id="audio-note"></div>
       <div class="done-msg" id="done-msg">
@@ -392,7 +391,6 @@ function bindAudio() {
   }
   aud.ontimeupdate = () => {
     const c=aud.currentTime, d=aud.duration||0;
-    if(c>maxT+1.5){aud.currentTime=maxT;return;}
     if(c>maxT)maxT=c;
     const p=d?(c/d)*100:0;
     document.getElementById('prog-bar').style.width=p+'%';
