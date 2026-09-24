@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,6 @@ header{background:var(--ultra-blue);padding:16px 32px;display:flex;align-items:c
 .section-sub{font-size:13px;color:#666;margin-bottom:24px}
 .episode-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
 .ep-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-top:4px solid var(--ultra-blue)}
-.ep-card.listened{border-top-color:var(--vital-green)}
 .ep-thumb{background:var(--ultra-blue);height:72px;display:flex;align-items:center;justify-content:center;position:relative}
 .ep-num{font-size:26px;font-weight:900;color:rgba(255,255,255,0.12)}
 .ep-icon{position:absolute;width:38px;height:38px;background:var(--sky-blue);border-radius:50%;display:flex;align-items:center;justify-content:center}
@@ -42,31 +40,9 @@ header{background:var(--ultra-blue);padding:16px 32px;display:flex;align-items:c
 .ep-body h3{font-size:15px;font-weight:700;margin-bottom:4px}
 .ep-body p{font-size:12px;color:#888;line-height:1.5;margin-bottom:12px}
 .ep-actions{display:flex;gap:8px}
-.btn-play{flex:1;background:var(--ultra-blue);color:white;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s}
-.btn-play:hover{background:#0d2d55}
-.btn-dl{flex:1;background:var(--flow-gray);color:var(--ultra-blue);border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s}
-.btn-dl:hover{background:#c5cdd6}
+.btn-dl{flex:1;background:var(--ultra-blue);color:white;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-dl:hover{background:#0d2d55}
 .ep-meta{font-size:11px;color:#aaa;margin-top:8px}
-#player-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center}
-#player-modal.open{display:flex}
-.player-card{background:white;border-radius:16px;width:95%;max-width:520px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4)}
-.player-hdr{background:var(--ultra-blue);padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
-.player-hdr h3{color:white;font-size:15px;font-weight:700;flex:1;margin-right:12px}
-.close-btn{background:none;border:none;color:var(--sky-blue);font-size:22px;cursor:pointer;line-height:1}
-.player-body{padding:24px}
-.player-desc{font-size:13px;color:#666;margin-bottom:16px;line-height:1.6}
-audio{display:none}
-.audio-ui{background:var(--flow-gray);border-radius:10px;padding:16px}
-.audio-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.play-btn{width:52px;height:52px;background:var(--ultra-blue);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-.play-btn svg{margin-left:2px}
-.time-txt{font-size:13px;font-weight:700;color:var(--ultra-blue)}
-.prog-wrap{height:8px;background:#b8c4ce;border-radius:4px;overflow:hidden;cursor:pointer}
-.prog-bar{height:100%;background:var(--ultra-blue);border-radius:4px;width:0%}
-.prog-bar.done{background:var(--vital-green)}
-.audio-note{font-size:12px;color:#888;text-align:center;margin-top:8px;min-height:18px}
-.done-msg{display:none;background:#e8fdf5;border:2px solid var(--vital-green);border-radius:10px;padding:14px;text-align:center;margin-top:14px}
-.done-msg h4{color:var(--vital-green);font-weight:700;margin-bottom:2px}
 #admin-pw-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:150;align-items:center;justify-content:center}
 #admin-pw-modal.open{display:flex}
 .pw-card{background:white;border-radius:16px;padding:40px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
@@ -81,6 +57,7 @@ audio{display:none}
 .admin-card{background:white;border-radius:16px;width:92%;max-width:700px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
 .admin-hdr{background:var(--ultra-blue);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1}
 .admin-hdr h3{color:white;font-size:16px;font-weight:700}
+.close-btn{background:none;border:none;color:var(--sky-blue);font-size:22px;cursor:pointer;line-height:1}
 .admin-body{padding:24px}
 .a-section{margin-bottom:28px}
 .a-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--sky-blue);margin-bottom:14px;padding-bottom:6px;border-bottom:2px solid var(--flow-gray)}
@@ -107,13 +84,11 @@ audio{display:none}
 .f-btn.active{background:var(--ultra-blue);color:white}
 .log-item{display:flex;gap:12px;padding:10px 14px;background:var(--flow-gray);border-radius:8px;margin-bottom:6px;align-items:flex-start}
 .log-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
-.log-dot.listened{background:var(--vital-green)}
 .log-dot.downloaded{background:var(--sky-blue)}
 .log-info strong{font-size:13px;display:block}
 .log-info .ep{font-size:12px;color:#555;margin:2px 0}
 .log-info .ts{font-size:11px;color:#aaa}
 .log-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px}
-.log-badge.listened{background:#e8fdf5;color:var(--vital-green)}
 .log-badge.downloaded{background:#e8f4fd;color:#1a7ab5}
 .log-empty{text-align:center;padding:24px;color:#aaa;font-size:13px}
 .loading{text-align:center;padding:40px;color:#aaa}
@@ -156,34 +131,6 @@ audio{display:none}
   </div>
 </div>
 
-<!-- PLAYER -->
-<div id="player-modal">
-  <div class="player-card">
-    <div class="player-hdr">
-      <h3 id="modal-title"></h3>
-      <button class="close-btn" id="close-player">✕</button>
-    </div>
-    <div class="player-body">
-      <p class="player-desc" id="modal-desc"></p>
-      <audio id="audio-el" playsinline></audio>
-      <div class="audio-ui">
-        <div class="audio-row">
-          <button class="play-btn" id="play-btn">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg>
-          </button>
-          <span class="time-txt" id="time-txt">0:00 / 0:00</span>
-        </div>
-        <div class="prog-wrap" id="prog-wrap"><div class="prog-bar" id="prog-bar"></div></div>
-      </div>
-      <div class="audio-note" id="audio-note"></div>
-      <div class="done-msg" id="done-msg">
-        <h4>✅ Episode Complete!</h4>
-        <p>Your completion has been recorded.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ADMIN PW -->
 <div id="admin-pw-modal">
   <div class="pw-card">
@@ -222,14 +169,14 @@ audio{display:none}
         <div class="form-row"><label>Title *</label><input id="ep-title" type="text" placeholder="e.g. Mastering the Discovery Call"/></div>
         <div class="form-row"><label>Description</label><textarea id="ep-desc" placeholder="What's covered…"></textarea></div>
         <div class="form-row">
-          <label>Audio URL</label>
+          <label>Audio Download URL</label>
           <input id="ep-url" type="url" placeholder="https://..."/>
-          <div class="hint">💡 Dropbox: change ?dl=0 → ?dl=1</div>
+          <div class="hint">💡 Dropbox: change ?dl=0 → ?dl=1 &nbsp;|&nbsp; Google Drive: use direct download link</div>
         </div>
         <div class="form-row">
           <label>PDF Companion URL (optional)</label>
-          <input id="ep-pdf" type="url" placeholder="https://rrfmmskzmqmcrqwbocxm.supabase.co/storage/v1/object/public/pdfs/..."/>
-          <div class="hint">💡 Use your Supabase Storage PDF URL</div>
+          <input id="ep-pdf" type="url" placeholder="https://drive.google.com/file/d/.../preview"/>
+          <div class="hint">💡 Google Drive: File → Share → Copy link, then change /view to /preview</div>
         </div>
         <div class="form-row"><label>Duration</label><input id="ep-duration" type="text" placeholder="e.g. 32 min"/></div>
         <button class="btn-save" id="add-ep-btn">Add Episode</button>
@@ -246,7 +193,6 @@ audio{display:none}
         <div class="log-summary" id="log-summary"></div>
         <div class="log-filters">
           <button class="f-btn active" data-f="all">All</button>
-          <button class="f-btn" data-f="listened">✅ Listened</button>
           <button class="f-btn" data-f="downloaded">⬇ Downloaded</button>
         </div>
         <div id="activity-log"><div class="log-empty">Loading…</div></div>
@@ -279,9 +225,7 @@ async function gsPost(sheet, action, data, matchKey) {
 // ── State ─────────────────────────────────────────────────────────
 let email = localStorage.getItem('flow_email') || '';
 let pw = localStorage.getItem('flow_pw') || 'flow2025';
-let episodes=[], completions=[], activity=[], progress=[];
-let currentEp=null, maxT=0, saveTimer=null;
-let aud=document.getElementById('audio-el'), playing=false, activeF='all';
+let episodes=[], activity=[], activeF='all';
 
 // ── Gate ──────────────────────────────────────────────────────────
 document.getElementById('enter-btn').onclick = go;
@@ -308,15 +252,13 @@ async function boot() {
   document.getElementById('app').style.display = 'block';
   document.getElementById('display-name').textContent = email;
   try {
-    [episodes, completions, activity, progress] = await Promise.all([
+    [episodes, activity] = await Promise.all([
       gsGet('episodes'),
-      gsGet('completions'),
-      gsGet('activity_log'),
-      gsGet('playback_progress')
+      gsGet('activity_log')
     ]);
   } catch(e) {
     console.error('Load error:', e);
-    episodes=[]; completions=[]; activity=[]; progress=[];
+    episodes=[]; activity=[];
   }
   renderEpisodes();
 }
@@ -324,37 +266,33 @@ async function boot() {
 // ── Episodes ──────────────────────────────────────────────────────
 function renderEpisodes() {
   const g = document.getElementById('episode-grid');
-  const mine = completions.filter(c => c.listener===email).map(c => c.ep_id);
+  const myDownloads = activity.filter(a => a.listener===email && a.action==='downloaded').map(a => a.ep_id);
   const total = episodes.length;
-  const done = episodes.filter(e => mine.includes(e.id)).length;
-  document.getElementById('progress-summary').textContent = total ? `${done} of ${total} episode${total!==1?'s':''} completed` : '';
+  const done = episodes.filter(e => myDownloads.includes(e.id)).length;
+  document.getElementById('progress-summary').textContent = total ? `${done} of ${total} episode${total!==1?'s':''} downloaded` : '';
 
   if(!total) { g.innerHTML = '<p style="text-align:center;color:#aaa;padding:60px 0">No episodes yet — check back soon!</p>'; return; }
 
   g.innerHTML = '';
   episodes.forEach((ep, i) => {
-    const listened = mine.includes(ep.id);
-    const saved = progress.find(p => p.listener===email && p.ep_id===ep.id);
-    const hasProgress = saved && parseFloat(saved.position) > 5 && !listened;
+    const downloaded = myDownloads.includes(ep.id);
     const d = document.createElement('div');
-    d.className = 'ep-card' + (listened ? ' listened' : '');
+    d.className = 'ep-card' + (downloaded ? ' listened' : '');
     d.innerHTML = `
       <div class="ep-thumb">
         <span class="ep-num">0${i+1}</span>
         <div class="ep-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg></div>
-        ${listened ? '<span class="listened-badge">✓ Listened</span>' : hasProgress ? `<span class="listened-badge" style="background:var(--sky-blue)">⏸ ${ft(saved.position)}</span>` : ''}
+        ${downloaded ? '<span class="listened-badge">✓ Downloaded</span>' : ''}
       </div>
       <div class="ep-body">
         <h3>${ep.title}</h3>
-        <p>${ep.description || 'Click play to listen.'}</p>
+        <p>${ep.description || 'Download to listen on your favorite podcast app.'}</p>
         <div class="ep-actions">
-          <button class="btn-play">${hasProgress ? '▶ Resume' : '▶ Play'}</button>
-          ${ep.audio_url ? '<button class="btn-dl">⬇ Audio</button>' : ''}
+          ${ep.audio_url ? '<button class="btn-dl">⬇ Download Audio</button>' : ''}
           ${ep.pdf_url ? '<button class="btn-pdf" style="flex:1;background:#e8f4fd;color:#1a7ab5;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer">📄 PDF</button>' : ''}
         </div>
-        ${ep.duration ? `<div class="ep-meta">⏱ ${ep.duration}${hasProgress ? ` · <span style="color:var(--sky-blue)">Paused at ${ft(saved.position)}</span>` : ''}${listened ? ` · <span style="color:var(--vital-green)">✅ Complete</span>` : ''}</div>` : ''}
+        ${ep.duration ? `<div class="ep-meta">⏱ ${ep.duration}</div>` : ''}
       </div>`;
-    d.querySelector('.btn-play').onclick = () => openPlayer(ep);
     const dl = d.querySelector('.btn-dl');
     if(dl) dl.onclick = () => downloadEp(ep);
     const pdf = d.querySelector('.btn-pdf');
@@ -363,120 +301,12 @@ function renderEpisodes() {
   });
 }
 
-// ── Player ────────────────────────────────────────────────────────
-async function openPlayer(ep) {
-  currentEp = ep; maxT = 0;
-  if(saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
-  document.getElementById('modal-title').textContent = ep.title;
-  document.getElementById('modal-desc').textContent = ep.description || '';
-  document.getElementById('done-msg').style.display = 'none';
-  document.getElementById('prog-bar').style.width = '0%';
-  document.getElementById('prog-bar').classList.remove('done');
-  document.getElementById('time-txt').textContent = '0:00 / 0:00';
-  document.getElementById('audio-note').textContent = '';
-  aud.pause(); aud.removeAttribute('src'); aud.load();
-  playing = false; setPBtn(false);
-
-  const done = completions.find(c => c.listener===email && c.ep_id===ep.id);
-  if(done) document.getElementById('done-msg').style.display = 'block';
-
-  // Fetch fresh progress
-  try {
-    const fresh = await gsGet('playback_progress');
-    progress = fresh;
-  } catch(e) {}
-
-  if(ep.audio_url) {
-    aud.src = ep.audio_url; aud.preload = 'auto'; aud.load();
-    bindAudio();
-  } else {
-    document.getElementById('audio-note').textContent = '⚠ No audio URL for this episode.';
-  }
-  document.getElementById('player-modal').classList.add('open');
-}
-
-function bindAudio() {
-  aud.ontimeupdate = null; aud.onended = null; aud.onplay = null; aud.onpause = null; aud.onerror = null;
-
-  const saved = progress.find(p => p.listener===email && p.ep_id===currentEp.id);
-  if(saved && parseFloat(saved.position) > 5) {
-    const pos = parseFloat(saved.position);
-    const resumeFn = () => {
-      aud.currentTime = pos; maxT = pos;
-      if(aud.duration) document.getElementById('prog-bar').style.width = ((pos/aud.duration)*100) + '%';
-      document.getElementById('time-txt').textContent = ft(pos) + ' / ' + ft(aud.duration||0);
-      document.getElementById('audio-note').textContent = `▶ Resuming from ${ft(pos)}`;
-      setTimeout(() => { document.getElementById('audio-note').textContent = ''; }, 3000);
-      aud.removeEventListener('canplay', resumeFn);
-    };
-    aud.addEventListener('canplay', resumeFn);
-  }
-
-  aud.ontimeupdate = () => {
-    const c = aud.currentTime, d = aud.duration||0;
-    if(c > maxT) maxT = c;
-    const pct = d ? (c/d)*100 : 0;
-    document.getElementById('prog-bar').style.width = pct + '%';
-    document.getElementById('time-txt').textContent = ft(c) + ' / ' + ft(d);
-    if(pct >= 97) doComplete();
-    if(c > 5 && !saveTimer) saveTimer = setTimeout(() => { saveProgress(aud.currentTime); saveTimer = null; }, 10000);
-  };
-  aud.onended = () => { playing=false; setPBtn(false); doComplete(); };
-  aud.onplay = () => { playing=true; setPBtn(true); };
-  aud.onpause = () => { playing=false; setPBtn(false); if(aud.currentTime>5) saveProgress(aud.currentTime); };
-  aud.onerror = () => { document.getElementById('audio-note').textContent = '⚠ Could not load audio. Check the URL.'; };
-}
-
-document.getElementById('play-btn').onclick = () => {
-  if(!aud.src) return;
-  if(playing) { aud.pause(); }
-  else { aud.play().catch(() => { document.getElementById('audio-note').textContent = 'Tap play again to start.'; }); }
-};
-
-document.getElementById('close-player').onclick = () => { aud.pause(); document.getElementById('player-modal').classList.remove('open'); };
-
-function setPBtn(p) {
-  document.getElementById('play-btn').innerHTML = p
-    ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="white"><rect x="1" y="1" width="4" height="12"/><rect x="9" y="1" width="4" height="12"/></svg>'
-    : '<svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg>';
-}
-function ft(s) { if(!s||isNaN(s)) return '0:00'; return Math.floor(s/60) + ':' + (Math.floor(s%60)<10?'0':'') + Math.floor(s%60); }
-
-async function doComplete() {
-  if(!currentEp || completions.find(c => c.listener===email && c.ep_id===currentEp.id)) return;
-  const rec = { id: Date.now().toString(), listener: email, ep_id: currentEp.id, ep_title: currentEp.title, completed_at: new Date().toISOString() };
-  try {
-    await gsPost('completions', 'insert', rec);
-    await gsPost('activity_log', 'insert', { id: Date.now().toString(), listener: email, ep_id: currentEp.id, ep_title: currentEp.title, action: 'listened', created_at: new Date().toISOString() });
-    completions.push(rec);
-    activity.unshift({...rec, action:'listened'});
-    document.getElementById('prog-bar').classList.add('done');
-    document.getElementById('done-msg').style.display = 'block';
-    renderEpisodes();
-  } catch(e) { console.error('Complete error:', e); }
-}
-
-async function saveProgress(pos) {
-  if(!currentEp || !email || pos < 5) return;
-  try {
-    await gsPost('playback_progress', 'upsert',
-      { id: email+'_'+currentEp.id, listener: email, ep_id: currentEp.id, position: Math.floor(pos), updated_at: new Date().toISOString() },
-      'id'
-    );
-    const i = progress.findIndex(p => p.listener===email && p.ep_id===currentEp.id);
-    if(i>=0) progress[i].position = Math.floor(pos);
-    else progress.push({ listener: email, ep_id: currentEp.id, position: Math.floor(pos) });
-    document.getElementById('audio-note').textContent = `💾 Saved at ${ft(pos)}`;
-    setTimeout(() => { document.getElementById('audio-note').textContent = ''; }, 2000);
-  } catch(e) { console.error('Progress save error:', e); }
-}
-
 async function downloadEp(ep) {
-  currentEp = ep;
   const a = document.createElement('a'); a.href = ep.audio_url; a.download = ep.title+'.mp3'; a.target = '_blank'; a.click();
   try {
     await gsPost('activity_log', 'insert', { id: Date.now().toString(), listener: email, ep_id: ep.id, ep_title: ep.title, action: 'downloaded', created_at: new Date().toISOString() });
-    activity.unshift({ listener: email, ep_title: ep.title, action: 'downloaded', created_at: new Date().toISOString() });
+    activity.unshift({ listener: email, ep_id: ep.id, ep_title: ep.title, action: 'downloaded', created_at: new Date().toISOString() });
+    renderEpisodes();
   } catch(e) { console.error('Download log error:', e); }
 }
 
@@ -504,8 +334,8 @@ function checkPw() {
 async function openAdmin() {
   document.getElementById('admin-modal').classList.add('open');
   try {
-    [episodes, completions, activity] = await Promise.all([
-      gsGet('episodes'), gsGet('completions'), gsGet('activity_log')
+    [episodes, activity] = await Promise.all([
+      gsGet('episodes'), gsGet('activity_log')
     ]);
   } catch(e) {}
   renderAdminEps();
@@ -542,7 +372,6 @@ async function addEp() {
 
 async function delEp(id) {
   if(!confirm('Delete this episode?')) return;
-  // Remove from sheet by marking — for simplicity filter locally
   episodes = episodes.filter(e => e.id !== id);
   renderAdminEps(); renderEpisodes();
   alert('Episode removed locally. To fully delete from Google Sheets, open the sheet and delete the row manually.');
@@ -568,21 +397,20 @@ document.querySelectorAll('.f-btn').forEach(b => {
 });
 
 function renderLog() {
-  const listened = activity.filter(a => a.action==='listened').length;
   const downloaded = activity.filter(a => a.action==='downloaded').length;
   const unique = new Set(activity.map(a => a.listener)).size;
   document.getElementById('log-summary').innerHTML = `
     <div class="log-stat"><div class="n">${unique}</div><div class="l">People</div></div>
-    <div class="log-stat"><div class="n">${listened}</div><div class="l">Listened</div></div>
-    <div class="log-stat"><div class="n">${downloaded}</div><div class="l">Downloaded</div></div>`;
+    <div class="log-stat"><div class="n">${downloaded}</div><div class="l">Downloaded</div></div>
+    <div class="log-stat"><div class="n">${episodes.length}</div><div class="l">Episodes</div></div>`;
   const filtered = activeF==='all' ? activity : activity.filter(a => a.action===activeF);
   const el = document.getElementById('activity-log');
   if(!filtered.length) { el.innerHTML = '<div class="log-empty">No activity yet.</div>'; return; }
   el.innerHTML = filtered.slice(0,100).map(a => `
     <div class="log-item">
-      <div class="log-dot ${a.action}"></div>
+      <div class="log-dot downloaded"></div>
       <div class="log-info">
-        <strong>${a.listener}<span class="log-badge ${a.action}">${a.action==='listened'?'✅ Listened':'⬇ Downloaded'}</span></strong>
+        <strong>${a.listener}<span class="log-badge downloaded">⬇ Downloaded</span></strong>
         <div class="ep">${a.ep_title}</div>
         <div class="ts">${a.created_at ? new Date(a.created_at).toLocaleString() : ''}</div>
       </div>
