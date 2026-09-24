@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +14,6 @@ header{background:var(--ultra-blue);padding:16px 32px;display:flex;align-items:c
 .logo-text{font-weight:900;font-size:20px;color:white;letter-spacing:1px}
 .admin-btn{background:transparent;border:2px solid var(--vital-green);color:var(--vital-green);padding:7px 16px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s}
 .admin-btn:hover{background:var(--vital-green);color:var(--ultra-blue)}
-
-/* GATE */
 #gate{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 70px);background:linear-gradient(135deg,var(--ultra-blue) 0%,#0d2d55 100%)}
 .gate-card{background:var(--white);border-radius:16px;padding:48px 40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
 .gate-card h2{font-size:22px;font-weight:900;color:var(--ultra-blue);margin-bottom:8px}
@@ -23,8 +22,6 @@ header{background:var(--ultra-blue);padding:16px 32px;display:flex;align-items:c
 .gate-card input:focus{border-color:var(--sky-blue)}
 .btn-primary{width:100%;margin-top:16px;background:var(--ultra-blue);color:var(--white);border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s}
 .btn-primary:hover{background:#0d2d55}
-
-/* APP */
 #app{display:none}
 .welcome-bar{background:var(--ultra-blue);padding:12px 32px;display:flex;align-items:center;justify-content:space-between}
 .welcome-bar span{color:var(--sky-blue);font-size:13px}
@@ -33,8 +30,6 @@ header{background:var(--ultra-blue);padding:16px 32px;display:flex;align-items:c
 .main-content{max-width:1100px;margin:0 auto;padding:32px 24px}
 .section-title{font-size:22px;font-weight:900;margin-bottom:6px}
 .section-sub{font-size:13px;color:#666;margin-bottom:24px}
-
-/* EPISODE CARDS */
 .episode-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
 .ep-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-top:4px solid var(--ultra-blue)}
 .ep-card.listened{border-top-color:var(--vital-green)}
@@ -52,8 +47,6 @@ header{background:var(--ultra-blue);padding:16px 32px;display:flex;align-items:c
 .btn-dl{flex:1;background:var(--flow-gray);color:var(--ultra-blue);border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s}
 .btn-dl:hover{background:#c5cdd6}
 .ep-meta{font-size:11px;color:#aaa;margin-top:8px}
-
-/* PLAYER MODAL */
 #player-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center}
 #player-modal.open{display:flex}
 .player-card{background:white;border-radius:16px;width:95%;max-width:520px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4)}
@@ -68,17 +61,14 @@ audio{display:none}
 .play-btn{width:52px;height:52px;background:var(--ultra-blue);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 .play-btn svg{margin-left:2px}
 .time-txt{font-size:13px;font-weight:700;color:var(--ultra-blue)}
-.prog-wrap{height:8px;background:#b8c4ce;border-radius:4px;overflow:hidden;cursor:not-allowed}
-.prog-bar{height:100%;background:var(--ultra-blue);border-radius:4px;width:0%;transition:width .3s linear}
+.prog-wrap{height:8px;background:#b8c4ce;border-radius:4px;overflow:hidden;cursor:pointer}
+.prog-bar{height:100%;background:var(--ultra-blue);border-radius:4px;width:0%}
 .prog-bar.done{background:var(--vital-green)}
-.lock-note{font-size:11px;color:#999;text-align:center;margin-top:6px}
-.audio-note{font-size:12px;color:#888;text-align:center;margin-top:8px}
+.audio-note{font-size:12px;color:#888;text-align:center;margin-top:8px;min-height:18px}
 .done-msg{display:none;background:#e8fdf5;border:2px solid var(--vital-green);border-radius:10px;padding:14px;text-align:center;margin-top:14px}
 .done-msg h4{color:var(--vital-green);font-weight:700;margin-bottom:2px}
-
-/* ADMIN PW MODAL */
-#pw-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:150;align-items:center;justify-content:center}
-#pw-modal.open{display:flex}
+#admin-pw-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:150;align-items:center;justify-content:center}
+#admin-pw-modal.open{display:flex}
 .pw-card{background:white;border-radius:16px;padding:40px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
 .pw-card h3{font-size:20px;font-weight:900;margin-bottom:8px}
 .pw-card p{font-size:13px;color:#888;margin-bottom:20px}
@@ -86,8 +76,6 @@ audio{display:none}
 .pw-err{color:#cc3333;font-size:12px;margin-top:8px;display:none}
 .pw-btns{display:flex;gap:10px;margin-top:14px}
 .btn-cancel{flex:1;background:var(--flow-gray);color:var(--ultra-blue);border:none;border-radius:8px;padding:12px;font-weight:700;cursor:pointer}
-
-/* ADMIN MODAL */
 #admin-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center}
 #admin-modal.open{display:flex}
 .admin-card{background:white;border-radius:16px;width:92%;max-width:700px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
@@ -102,7 +90,7 @@ audio{display:none}
 .form-row input:focus,.form-row textarea:focus{border-color:var(--sky-blue)}
 .form-row textarea{height:65px;resize:vertical}
 .hint{font-size:11px;color:#aaa;margin-top:4px}
-.btn-save{background:var(--vital-green);color:white;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-save{background:var(--vital-green);color:white;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s;width:100%;margin-top:4px}
 .btn-save:hover{background:#00a87a}
 .btn-save.blue{background:var(--ultra-blue)}
 .btn-save.blue:hover{background:#0d2d55}
@@ -110,8 +98,6 @@ audio{display:none}
 .ep-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--flow-gray);border-radius:8px;margin-bottom:8px;font-size:13px}
 .ep-item strong{color:var(--ultra-blue)}
 .del-btn{background:none;border:none;color:#cc3333;font-size:18px;cursor:pointer;line-height:1}
-
-/* ACTIVITY LOG */
 .log-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
 .log-stat{background:var(--flow-gray);border-radius:8px;padding:12px;text-align:center}
 .log-stat .n{font-size:24px;font-weight:900;color:var(--ultra-blue)}
@@ -130,6 +116,9 @@ audio{display:none}
 .log-badge.listened{background:#e8fdf5;color:var(--vital-green)}
 .log-badge.downloaded{background:#e8f4fd;color:#1a7ab5}
 .log-empty{text-align:center;padding:24px;color:#aaa;font-size:13px}
+.loading{text-align:center;padding:40px;color:#aaa}
+.spinner{width:32px;height:32px;border:3px solid var(--flow-gray);border-top-color:var(--ultra-blue);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -139,7 +128,6 @@ audio{display:none}
   <button class="admin-btn" id="admin-open-btn">⚙ Admin</button>
 </header>
 
-<!-- GATE -->
 <div id="gate">
   <div class="gate-card">
     <svg width="50" height="50" viewBox="0 0 52 52" style="margin-bottom:16px" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +142,6 @@ audio{display:none}
   </div>
 </div>
 
-<!-- APP -->
 <div id="app">
   <div class="welcome-bar">
     <span>Welcome, <strong id="display-name"></strong></span>
@@ -163,8 +150,9 @@ audio{display:none}
   <div class="main-content">
     <div class="section-title">Sales Training Podcasts</div>
     <div class="section-sub" id="progress-summary"></div>
-    <div class="episode-grid" id="episode-grid"></div>
-    <p id="no-episodes" style="display:none;text-align:center;color:#aaa;padding:60px 0;font-size:15px">No episodes yet — check back soon!</p>
+    <div id="episode-grid" class="episode-grid">
+      <div class="loading"><div class="spinner"></div>Loading episodes…</div>
+    </div>
   </div>
 </div>
 
@@ -185,7 +173,7 @@ audio{display:none}
           </button>
           <span class="time-txt" id="time-txt">0:00 / 0:00</span>
         </div>
-        <div class="prog-wrap"><div class="prog-bar" id="prog-bar"></div></div>
+        <div class="prog-wrap" id="prog-wrap"><div class="prog-bar" id="prog-bar"></div></div>
       </div>
       <div class="audio-note" id="audio-note"></div>
       <div class="done-msg" id="done-msg">
@@ -196,10 +184,8 @@ audio{display:none}
   </div>
 </div>
 
-
-
 <!-- ADMIN PW -->
-<div id="pw-modal">
+<div id="admin-pw-modal">
   <div class="pw-card">
     <h3>🔒 Admin Access</h3>
     <p>Enter your admin password.</p>
@@ -221,7 +207,6 @@ audio{display:none}
     </div>
     <div class="admin-body">
 
-      <!-- Change Password -->
       <div class="a-section">
         <div class="a-title">🔑 Admin Password</div>
         <div class="form-row">
@@ -232,41 +217,39 @@ audio{display:none}
         <div class="saved-msg" id="pw-saved">✓ Saved!</div>
       </div>
 
-      <!-- Add Episode -->
       <div class="a-section">
         <div class="a-title">➕ Add Episode</div>
         <div class="form-row"><label>Title *</label><input id="ep-title" type="text" placeholder="e.g. Mastering the Discovery Call"/></div>
-        <div class="form-row"><label>Description</label><textarea id="ep-desc" placeholder="What's covered in this episode…"></textarea></div>
+        <div class="form-row"><label>Description</label><textarea id="ep-desc" placeholder="What's covered…"></textarea></div>
         <div class="form-row">
           <label>Audio URL</label>
           <input id="ep-url" type="url" placeholder="https://..."/>
-          <div class="hint">💡 Dropbox: change ?dl=0 → ?dl=1 at end of link</div>
+          <div class="hint">💡 Dropbox: change ?dl=0 → ?dl=1</div>
         </div>
-        <div class="form-row"><label>Duration</label><input id="ep-duration" type="text" placeholder="e.g. 32 min"/></div>
         <div class="form-row">
           <label>PDF Companion URL (optional)</label>
-          <input id="ep-pdf" type="url" placeholder="https://res.cloudinary.com/..."/>
-          <div class="hint">💡 Upload PDF to Cloudinary and paste the URL here</div>
+          <input id="ep-pdf" type="url" placeholder="https://rrfmmskzmqmcrqwbocxm.supabase.co/storage/v1/object/public/pdfs/..."/>
+          <div class="hint">💡 Use your Supabase Storage PDF URL</div>
         </div>
+        <div class="form-row"><label>Duration</label><input id="ep-duration" type="text" placeholder="e.g. 32 min"/></div>
         <button class="btn-save" id="add-ep-btn">Add Episode</button>
+        <div class="saved-msg" id="ep-saved">✓ Episode added!</div>
       </div>
 
-      <!-- Episodes List -->
       <div class="a-section">
         <div class="a-title">🎙 Episodes</div>
-        <div id="admin-ep-list"></div>
+        <div id="admin-ep-list"><div class="loading"><div class="spinner"></div></div></div>
       </div>
 
-      <!-- Activity Log -->
       <div class="a-section">
-        <div class="a-title">📋 Who Listened & Who Downloaded</div>
+        <div class="a-title">📋 Activity Log</div>
         <div class="log-summary" id="log-summary"></div>
         <div class="log-filters">
-          <button class="f-btn active" data-f="all">All Activity</button>
+          <button class="f-btn active" data-f="all">All</button>
           <button class="f-btn" data-f="listened">✅ Listened</button>
           <button class="f-btn" data-f="downloaded">⬇ Downloaded</button>
         </div>
-        <div id="activity-log"></div>
+        <div id="activity-log"><div class="log-empty">Loading…</div></div>
       </div>
 
     </div>
@@ -274,296 +257,342 @@ audio{display:none}
 </div>
 
 <script>
-const SB = 'https://rrfmmskzmqmcrqwbocxm.supabase.co';
-const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZm1tc2t6bXFtY3Jxd2JvY3htIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2Mjk3NjYsImV4cCI6MjA5MDIwNTc2Nn0.U2ZF2aP7MNcMZ0NlKwJ00V1kkN3l6GMe9FfwbNEGkdM';
-const H = {'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json'};
+// ── Google Sheets API ─────────────────────────────────────────────
+const GS = 'https://script.google.com/macros/s/AKfycbzKFVZ89k2Y8MLnEICPfhsA9yddv0HyaI2Mkl2jWE1wQsE8Yw5pfSwxhdGsqcAE9S9O/exec';
 
-const api = {
-  get: async (t,q='') => { const r=await fetch(`${SB}/rest/v1/${t}?${q}`,{headers:H}); if(!r.ok)throw new Error(await r.text()); return r.json(); },
-  post: async (t,b) => { const r=await fetch(`${SB}/rest/v1/${t}`,{method:'POST',headers:{...H,'Prefer':'return=minimal'},body:JSON.stringify(b)}); if(!r.ok)throw new Error(await r.text()); },
-  del: async (t,c,v) => { const r=await fetch(`${SB}/rest/v1/${t}?${c}=eq.${encodeURIComponent(v)}`,{method:'DELETE',headers:H}); if(!r.ok)throw new Error(await r.text()); }
-};
+async function gsGet(sheet) {
+  const r = await fetch(`${GS}?sheet=${sheet}`);
+  if(!r.ok) throw new Error('Failed to load '+sheet);
+  return r.json();
+}
 
-let email='', pw=localStorage.getItem('flow_pw')||'flow2025';
-let episodes=[], completions=[], activity=[], progress=[], currentEp=null, maxT=0;
+async function gsPost(sheet, action, data, matchKey) {
+  const r = await fetch(GS, {
+    method: 'POST',
+    headers: {'Content-Type': 'text/plain'},
+    body: JSON.stringify({sheet, action, data, matchKey})
+  });
+  if(!r.ok) throw new Error('Failed to post to '+sheet);
+  return r.json();
+}
+
+// ── State ─────────────────────────────────────────────────────────
+let email = localStorage.getItem('flow_email') || '';
+let pw = localStorage.getItem('flow_pw') || 'flow2025';
+let episodes=[], completions=[], activity=[], progress=[];
+let currentEp=null, maxT=0, saveTimer=null;
 let aud=document.getElementById('audio-el'), playing=false, activeF='all';
-let saveTimer=null;
 
 // ── Gate ──────────────────────────────────────────────────────────
 document.getElementById('enter-btn').onclick = go;
 document.getElementById('listener-email').onkeydown = e => { if(e.key==='Enter') go(); };
+
 async function go() {
   const v = document.getElementById('listener-email').value.trim();
-  if(!v||!v.includes('@')){ alert('Please enter a valid email.'); return; }
-  email=v; localStorage.setItem('flow_email',email);
+  if(!v || !v.includes('@')) { alert('Please enter a valid email.'); return; }
+  email = v;
+  localStorage.setItem('flow_email', email);
   await boot();
 }
+
 document.getElementById('logout-btn').onclick = () => {
-  email=''; localStorage.removeItem('flow_email');
-  document.getElementById('app').style.display='none';
-  document.getElementById('gate').style.display='flex';
-  document.getElementById('listener-email').value='';
+  email = '';
+  localStorage.removeItem('flow_email');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('gate').style.display = 'flex';
+  document.getElementById('listener-email').value = '';
 };
 
 async function boot() {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('display-name').textContent = email;
   try {
-    document.getElementById('gate').style.display='none';
-    document.getElementById('app').style.display='block';
-    document.getElementById('display-name').textContent=email;
     [episodes, completions, activity, progress] = await Promise.all([
-      api.get('episodes','order=created_at.asc'),
-      api.get('completions','order=completed_at.desc'),
-      api.get('activity_log','order=created_at.desc'),
-      api.get('playback_progress',`listener=eq.${encodeURIComponent(email)}`)
+      gsGet('episodes'),
+      gsGet('completions'),
+      gsGet('activity_log'),
+      gsGet('playback_progress')
     ]);
   } catch(e) {
-    episodes=episodes||[]; completions=completions||[]; activity=activity||[];
+    console.error('Load error:', e);
+    episodes=[]; completions=[]; activity=[]; progress=[];
   }
   renderEpisodes();
 }
 
 // ── Episodes ──────────────────────────────────────────────────────
 function renderEpisodes() {
-  const g=document.getElementById('episode-grid');
-  g.innerHTML='';
-  const mine=completions.filter(c=>c.listener===email).map(c=>c.ep_id);
-  const total=episodes.length, done=episodes.filter(e=>mine.includes(e.id)).length;
+  const g = document.getElementById('episode-grid');
+  const mine = completions.filter(c => c.listener===email).map(c => c.ep_id);
+  const total = episodes.length;
+  const done = episodes.filter(e => mine.includes(e.id)).length;
   document.getElementById('progress-summary').textContent = total ? `${done} of ${total} episode${total!==1?'s':''} completed` : '';
-  document.getElementById('no-episodes').style.display = total?'none':'block';
-  episodes.forEach((ep,i) => {
+
+  if(!total) { g.innerHTML = '<p style="text-align:center;color:#aaa;padding:60px 0">No episodes yet — check back soon!</p>'; return; }
+
+  g.innerHTML = '';
+  episodes.forEach((ep, i) => {
     const listened = mine.includes(ep.id);
-    const saved = progress.find(p=>p.ep_id===ep.id);
-    const hasProgress = saved && saved.position > 5 && !listened;
+    const saved = progress.find(p => p.listener===email && p.ep_id===ep.id);
+    const hasProgress = saved && parseFloat(saved.position) > 5 && !listened;
     const d = document.createElement('div');
-    d.className = 'ep-card'+(listened?' listened':'');
+    d.className = 'ep-card' + (listened ? ' listened' : '');
     d.innerHTML = `
       <div class="ep-thumb">
         <span class="ep-num">0${i+1}</span>
         <div class="ep-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg></div>
-        ${listened?'<span class="listened-badge">✓ Listened</span>':hasProgress?`<span class="listened-badge" style="background:var(--sky-blue)">⏸ ${ft(saved.position)}</span>`:''}
+        ${listened ? '<span class="listened-badge">✓ Listened</span>' : hasProgress ? `<span class="listened-badge" style="background:var(--sky-blue)">⏸ ${ft(saved.position)}</span>` : ''}
       </div>
       <div class="ep-body">
         <h3>${ep.title}</h3>
-        <p>${ep.description||'Click play to listen to this episode.'}</p>
+        <p>${ep.description || 'Click play to listen.'}</p>
         <div class="ep-actions">
-          <button class="btn-play" data-id="${ep.id}">${hasProgress?'▶ Resume':'▶ Play'}</button>
-          ${ep.audio_url?`<button class="btn-dl" data-id="${ep.id}">⬇ Audio</button>`:''}
-          ${ep.pdf_url?`<button style="flex:1;background:#e8f4fd;color:#1a7ab5;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer" onclick="window.open('${ep.pdf_url}','_blank')">📄 PDF</button>`:''}
+          <button class="btn-play">${hasProgress ? '▶ Resume' : '▶ Play'}</button>
+          ${ep.audio_url ? '<button class="btn-dl">⬇ Audio</button>' : ''}
+          ${ep.pdf_url ? '<button class="btn-pdf" style="flex:1;background:#e8f4fd;color:#1a7ab5;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer">📄 PDF</button>' : ''}
         </div>
-        ${ep.duration?`<div class="ep-meta">⏱ ${ep.duration}${hasProgress?` · <span style="color:var(--sky-blue)">Paused at ${ft(saved.position)}</span>`:''}${listened?` · <span style="color:var(--vital-green)">✅ Complete</span>`:''}</div>`:''}
+        ${ep.duration ? `<div class="ep-meta">⏱ ${ep.duration}${hasProgress ? ` · <span style="color:var(--sky-blue)">Paused at ${ft(saved.position)}</span>` : ''}${listened ? ` · <span style="color:var(--vital-green)">✅ Complete</span>` : ''}</div>` : ''}
       </div>`;
     d.querySelector('.btn-play').onclick = () => openPlayer(ep);
-    const dlBtn = d.querySelector('.btn-dl');
-    if(dlBtn) dlBtn.onclick = () => downloadEp(ep);
-    const pdfBtn = d.querySelector('.btn-pdf');
-    if(pdfBtn) pdfBtn.onclick = () => openPdf(ep);
+    const dl = d.querySelector('.btn-dl');
+    if(dl) dl.onclick = () => downloadEp(ep);
+    const pdf = d.querySelector('.btn-pdf');
+    if(pdf) pdf.onclick = () => window.open(ep.pdf_url, '_blank');
     g.appendChild(d);
   });
 }
 
 // ── Player ────────────────────────────────────────────────────────
-function openPlayer(ep) {
-  currentEp=ep; maxT=0; saveTimer=null;
-  document.getElementById('modal-title').textContent=ep.title;
-  document.getElementById('modal-desc').textContent=ep.description||'';
-  document.getElementById('done-msg').style.display='none';
-  document.getElementById('prog-bar').style.width='0%';
+async function openPlayer(ep) {
+  currentEp = ep; maxT = 0;
+  if(saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
+  document.getElementById('modal-title').textContent = ep.title;
+  document.getElementById('modal-desc').textContent = ep.description || '';
+  document.getElementById('done-msg').style.display = 'none';
+  document.getElementById('prog-bar').style.width = '0%';
   document.getElementById('prog-bar').classList.remove('done');
-  document.getElementById('time-txt').textContent='0:00 / 0:00';
-  document.getElementById('audio-note').textContent='';
-  aud.pause(); aud.src=''; playing=false; setPBtn(false);
-  const done = completions.find(c=>c.listener===email&&c.ep_id===ep.id);
-  if(done) document.getElementById('done-msg').style.display='block';
-  if(ep.audio_url){ aud.src=ep.audio_url; aud.load(); bindAudio(); }
-  else { document.getElementById('audio-note').textContent='⚠ No audio URL set for this episode.'; }
+  document.getElementById('time-txt').textContent = '0:00 / 0:00';
+  document.getElementById('audio-note').textContent = '';
+  aud.pause(); aud.removeAttribute('src'); aud.load();
+  playing = false; setPBtn(false);
+
+  const done = completions.find(c => c.listener===email && c.ep_id===ep.id);
+  if(done) document.getElementById('done-msg').style.display = 'block';
+
+  // Fetch fresh progress
+  try {
+    const fresh = await gsGet('playback_progress');
+    progress = fresh;
+  } catch(e) {}
+
+  if(ep.audio_url) {
+    aud.src = ep.audio_url; aud.preload = 'auto'; aud.load();
+    bindAudio();
+  } else {
+    document.getElementById('audio-note').textContent = '⚠ No audio URL for this episode.';
+  }
   document.getElementById('player-modal').classList.add('open');
 }
+
 function bindAudio() {
-  // Resume from saved position
-  const saved = progress.find(p=>p.ep_id===currentEp.id);
-  if(saved && saved.position > 5) {
-    aud.addEventListener('loadedmetadata', ()=>{
-      aud.currentTime = saved.position;
-      maxT = saved.position;
-      document.getElementById('audio-note').textContent = `▶ Resuming from ${ft(saved.position)}`;
-      setTimeout(()=>document.getElementById('audio-note').textContent='', 3000);
-    }, {once:true});
+  aud.ontimeupdate = null; aud.onended = null; aud.onplay = null; aud.onpause = null; aud.onerror = null;
+
+  const saved = progress.find(p => p.listener===email && p.ep_id===currentEp.id);
+  if(saved && parseFloat(saved.position) > 5) {
+    const pos = parseFloat(saved.position);
+    const resumeFn = () => {
+      aud.currentTime = pos; maxT = pos;
+      if(aud.duration) document.getElementById('prog-bar').style.width = ((pos/aud.duration)*100) + '%';
+      document.getElementById('time-txt').textContent = ft(pos) + ' / ' + ft(aud.duration||0);
+      document.getElementById('audio-note').textContent = `▶ Resuming from ${ft(pos)}`;
+      setTimeout(() => { document.getElementById('audio-note').textContent = ''; }, 3000);
+      aud.removeEventListener('canplay', resumeFn);
+    };
+    aud.addEventListener('canplay', resumeFn);
   }
+
   aud.ontimeupdate = () => {
-    const c=aud.currentTime, d=aud.duration||0;
-    if(c>maxT)maxT=c;
-    const p=d?(c/d)*100:0;
-    document.getElementById('prog-bar').style.width=p+'%';
-    document.getElementById('time-txt').textContent=ft(c)+' / '+ft(d);
-    if(p>=97) doComplete();
-    // Save progress every 10 seconds
-    if(!saveTimer) saveTimer=setTimeout(()=>{ saveProgress(c); saveTimer=null; }, 10000);
+    const c = aud.currentTime, d = aud.duration||0;
+    if(c > maxT) maxT = c;
+    const pct = d ? (c/d)*100 : 0;
+    document.getElementById('prog-bar').style.width = pct + '%';
+    document.getElementById('time-txt').textContent = ft(c) + ' / ' + ft(d);
+    if(pct >= 97) doComplete();
+    if(c > 5 && !saveTimer) saveTimer = setTimeout(() => { saveProgress(aud.currentTime); saveTimer = null; }, 10000);
   };
-  aud.onended=()=>{playing=false;setPBtn(false);doComplete();};
-  aud.onplay=()=>{playing=true;setPBtn(true);};
-  aud.onpause=()=>{playing=false;setPBtn(false);saveProgress(aud.currentTime);};
-  aud.onerror=()=>{document.getElementById('audio-note').textContent='⚠ Could not load audio. Check the URL.';};
+  aud.onended = () => { playing=false; setPBtn(false); doComplete(); };
+  aud.onplay = () => { playing=true; setPBtn(true); };
+  aud.onpause = () => { playing=false; setPBtn(false); if(aud.currentTime>5) saveProgress(aud.currentTime); };
+  aud.onerror = () => { document.getElementById('audio-note').textContent = '⚠ Could not load audio. Check the URL.'; };
 }
 
-async function saveProgress(pos) {
-  if(!currentEp||!email||pos<5) return;
-  try {
-    const res = await fetch(`${SB}/rest/v1/playback_progress`, {
-      method:'POST',
-      headers:{...H,'Prefer':'resolution=merge-duplicates'},
-      body:JSON.stringify({listener:email, ep_id:currentEp.id, position:Math.floor(pos), updated_at:new Date().toISOString()})
-    });
-    if(!res.ok) { console.error('Save failed:',await res.text()); return; }
-    // Update local cache
-    const i=progress.findIndex(p=>p.ep_id===currentEp.id);
-    if(i>=0) progress[i].position=Math.floor(pos);
-    else progress.push({listener:email,ep_id:currentEp.id,position:Math.floor(pos)});
-    console.log('✅ Progress saved:',Math.floor(pos),'sec for',currentEp.title);
-    document.getElementById('audio-note').textContent=`💾 Progress saved at ${ft(pos)}`;
-    setTimeout(()=>document.getElementById('audio-note').textContent='',2000);
-  } catch(e){ console.error('Progress save error:',e); }
-}
 document.getElementById('play-btn').onclick = () => {
-  if(!aud.src)return;
-  playing ? aud.pause() : aud.play().catch(()=>{document.getElementById('audio-note').textContent='Tap play again to start.';});
+  if(!aud.src) return;
+  if(playing) { aud.pause(); }
+  else { aud.play().catch(() => { document.getElementById('audio-note').textContent = 'Tap play again to start.'; }); }
 };
+
 document.getElementById('close-player').onclick = () => { aud.pause(); document.getElementById('player-modal').classList.remove('open'); };
+
 function setPBtn(p) {
   document.getElementById('play-btn').innerHTML = p
     ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="white"><rect x="1" y="1" width="4" height="12"/><rect x="9" y="1" width="4" height="12"/></svg>'
     : '<svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="3,1 15,8 3,15"/></svg>';
 }
-function ft(s){if(!s||isNaN(s))return'0:00';return Math.floor(s/60)+':'+(Math.floor(s%60)<10?'0':'')+Math.floor(s%60);}
+function ft(s) { if(!s||isNaN(s)) return '0:00'; return Math.floor(s/60) + ':' + (Math.floor(s%60)<10?'0':'') + Math.floor(s%60); }
 
 async function doComplete() {
-  if(!currentEp||completions.find(c=>c.listener===email&&c.ep_id===currentEp.id))return;
+  if(!currentEp || completions.find(c => c.listener===email && c.ep_id===currentEp.id)) return;
+  const rec = { id: Date.now().toString(), listener: email, ep_id: currentEp.id, ep_title: currentEp.title, completed_at: new Date().toISOString() };
   try {
-    await api.post('completions',{listener:email,ep_id:currentEp.id,ep_title:currentEp.title});
-    await api.post('activity_log',{listener:email,ep_id:currentEp.id,ep_title:currentEp.title,action:'listened'});
-    completions.unshift({listener:email,ep_id:currentEp.id,ep_title:currentEp.title});
-    activity.unshift({listener:email,ep_title:currentEp.title,action:'listened',created_at:new Date().toISOString()});
+    await gsPost('completions', 'insert', rec);
+    await gsPost('activity_log', 'insert', { id: Date.now().toString(), listener: email, ep_id: currentEp.id, ep_title: currentEp.title, action: 'listened', created_at: new Date().toISOString() });
+    completions.push(rec);
+    activity.unshift({...rec, action:'listened'});
     document.getElementById('prog-bar').classList.add('done');
-    document.getElementById('done-msg').style.display='block';
+    document.getElementById('done-msg').style.display = 'block';
     renderEpisodes();
-  }catch(e){console.error(e);}
+  } catch(e) { console.error('Complete error:', e); }
+}
+
+async function saveProgress(pos) {
+  if(!currentEp || !email || pos < 5) return;
+  try {
+    await gsPost('playback_progress', 'upsert',
+      { id: email+'_'+currentEp.id, listener: email, ep_id: currentEp.id, position: Math.floor(pos), updated_at: new Date().toISOString() },
+      'id'
+    );
+    const i = progress.findIndex(p => p.listener===email && p.ep_id===currentEp.id);
+    if(i>=0) progress[i].position = Math.floor(pos);
+    else progress.push({ listener: email, ep_id: currentEp.id, position: Math.floor(pos) });
+    document.getElementById('audio-note').textContent = `💾 Saved at ${ft(pos)}`;
+    setTimeout(() => { document.getElementById('audio-note').textContent = ''; }, 2000);
+  } catch(e) { console.error('Progress save error:', e); }
 }
 
 async function downloadEp(ep) {
-  currentEp=ep;
-  const a=document.createElement('a');a.href=ep.audio_url;a.download=ep.title+'.mp3';a.target='_blank';a.click();
+  currentEp = ep;
+  const a = document.createElement('a'); a.href = ep.audio_url; a.download = ep.title+'.mp3'; a.target = '_blank'; a.click();
   try {
-    await api.post('activity_log',{listener:email,ep_id:ep.id,ep_title:ep.title,action:'downloaded'});
-    activity.unshift({listener:email,ep_title:ep.title,action:'downloaded',created_at:new Date().toISOString()});
-  }catch(e){console.error(e);}
+    await gsPost('activity_log', 'insert', { id: Date.now().toString(), listener: email, ep_id: ep.id, ep_title: ep.title, action: 'downloaded', created_at: new Date().toISOString() });
+    activity.unshift({ listener: email, ep_title: ep.title, action: 'downloaded', created_at: new Date().toISOString() });
+  } catch(e) { console.error('Download log error:', e); }
 }
 
 // ── Admin ─────────────────────────────────────────────────────────
 document.getElementById('admin-open-btn').onclick = () => {
-  document.getElementById('pw-input').value='';
-  document.getElementById('pw-err').style.display='none';
-  document.getElementById('pw-modal').classList.add('open');
-  setTimeout(()=>document.getElementById('pw-input').focus(),100);
+  document.getElementById('pw-input').value = '';
+  document.getElementById('pw-err').style.display = 'none';
+  document.getElementById('admin-pw-modal').classList.add('open');
+  setTimeout(() => document.getElementById('pw-input').focus(), 100);
 };
-document.getElementById('pw-cancel').onclick = ()=>document.getElementById('pw-modal').classList.remove('open');
+document.getElementById('pw-cancel').onclick = () => document.getElementById('admin-pw-modal').classList.remove('open');
 document.getElementById('pw-submit').onclick = checkPw;
-document.getElementById('pw-input').onkeydown = e=>{if(e.key==='Enter')checkPw();};
+document.getElementById('pw-input').onkeydown = e => { if(e.key==='Enter') checkPw(); };
+
 function checkPw() {
-  if(document.getElementById('pw-input').value===pw){
-    document.getElementById('pw-modal').classList.remove('open');
+  if(document.getElementById('pw-input').value === pw) {
+    document.getElementById('admin-pw-modal').classList.remove('open');
     openAdmin();
   } else {
-    document.getElementById('pw-err').style.display='block';
-    document.getElementById('pw-input').value='';
+    document.getElementById('pw-err').style.display = 'block';
+    document.getElementById('pw-input').value = '';
   }
 }
+
 async function openAdmin() {
   document.getElementById('admin-modal').classList.add('open');
   try {
     [episodes, completions, activity] = await Promise.all([
-      api.get('episodes','order=created_at.asc'),
-      api.get('completions','order=completed_at.desc'),
-      api.get('activity_log','order=created_at.desc')
+      gsGet('episodes'), gsGet('completions'), gsGet('activity_log')
     ]);
   } catch(e) {}
   renderAdminEps();
   renderLog();
 }
-document.getElementById('close-admin').onclick = ()=>document.getElementById('admin-modal').classList.remove('open');
+
+document.getElementById('close-admin').onclick = () => document.getElementById('admin-modal').classList.remove('open');
 
 document.getElementById('save-pw-btn').onclick = () => {
-  const p=document.getElementById('new-pw').value.trim();
-  if(!p){alert('Enter a password.');return;}
-  pw=p;localStorage.setItem('flow_pw',p);
-  flash('pw-saved');
+  const p = document.getElementById('new-pw').value.trim();
+  if(!p) { alert('Enter a password.'); return; }
+  pw = p; localStorage.setItem('flow_pw', p); flash('pw-saved');
 };
+
 document.getElementById('add-ep-btn').onclick = addEp;
 async function addEp() {
-  const title=document.getElementById('ep-title').value.trim();
-  if(!title){alert('Title is required.');return;}
-  const ep={id:Date.now().toString(),title,description:document.getElementById('ep-desc').value.trim(),duration:document.getElementById('ep-duration').value.trim(),audio_url:document.getElementById('ep-url').value.trim()||null,pdf_url:document.getElementById('ep-pdf').value.trim()||null};
-  try{
-    await api.post('episodes',ep);
+  const title = document.getElementById('ep-title').value.trim();
+  if(!title) { alert('Title is required.'); return; }
+  const ep = {
+    id: Date.now().toString(),
+    title,
+    description: document.getElementById('ep-desc').value.trim(),
+    duration: document.getElementById('ep-duration').value.trim(),
+    audio_url: document.getElementById('ep-url').value.trim() || '',
+    pdf_url: document.getElementById('ep-pdf').value.trim() || ''
+  };
+  try {
+    await gsPost('episodes', 'insert', ep);
     episodes.push(ep);
-    ['ep-title','ep-desc','ep-duration','ep-url','ep-pdf'].forEach(i=>document.getElementById(i).value='');
-    renderAdminEps();renderEpisodes();
-  }catch(e){alert('Error: '+e.message);}
+    ['ep-title','ep-desc','ep-duration','ep-url','ep-pdf'].forEach(id => document.getElementById(id).value = '');
+    renderAdminEps(); renderEpisodes(); flash('ep-saved');
+  } catch(e) { alert('Error adding episode: ' + e.message); }
 }
+
 async function delEp(id) {
-  if(!confirm('Delete this episode and all its activity?'))return;
-  try{
-    await Promise.all([api.del('episodes','id',id),api.del('completions','ep_id',id),api.del('activity_log','ep_id',id)]);
-    episodes=episodes.filter(e=>e.id!==id);
-    completions=completions.filter(c=>c.ep_id!==id);
-    activity=activity.filter(a=>a.ep_id!==id);
-    renderAdminEps();renderEpisodes();renderLog();
-  }catch(e){alert('Error: '+e.message);}
+  if(!confirm('Delete this episode?')) return;
+  // Remove from sheet by marking — for simplicity filter locally
+  episodes = episodes.filter(e => e.id !== id);
+  renderAdminEps(); renderEpisodes();
+  alert('Episode removed locally. To fully delete from Google Sheets, open the sheet and delete the row manually.');
 }
+
 function renderAdminEps() {
-  const el=document.getElementById('admin-ep-list');
-  if(!episodes.length){el.innerHTML='<p style="font-size:13px;color:#aaa">No episodes yet.</p>';return;}
-  el.innerHTML=episodes.map(ep=>`
+  const el = document.getElementById('admin-ep-list');
+  if(!episodes.length) { el.innerHTML = '<p style="font-size:13px;color:#aaa">No episodes yet.</p>'; return; }
+  el.innerHTML = episodes.map(ep => `
     <div class="ep-item">
       <div><strong>${ep.title}</strong><br>
-      <span style="font-size:11px;color:#888">${ep.audio_url?'🔗 URL set':'⚠ No audio'}${ep.duration?' · '+ep.duration:''}</span></div>
+      <span style="font-size:11px;color:#888">${ep.audio_url?'🔗 Audio set':'⚠ No audio'}${ep.pdf_url?' · 📄 PDF set':''}${ep.duration?' · '+ep.duration:''}</span></div>
       <button class="del-btn" onclick="delEp('${ep.id}')">🗑</button>
     </div>`).join('');
 }
 
-// Filter buttons
-document.querySelectorAll('.f-btn').forEach(b=>{
-  b.onclick=()=>{
-    activeF=b.dataset.f;
-    document.querySelectorAll('.f-btn').forEach(x=>x.classList.toggle('active',x===b));
+document.querySelectorAll('.f-btn').forEach(b => {
+  b.onclick = () => {
+    activeF = b.dataset.f;
+    document.querySelectorAll('.f-btn').forEach(x => x.classList.toggle('active', x===b));
     renderLog();
   };
 });
 
 function renderLog() {
-  const listened=activity.filter(a=>a.action==='listened').length;
-  const downloaded=activity.filter(a=>a.action==='downloaded').length;
-  const unique=new Set(activity.map(a=>a.listener)).size;
-  document.getElementById('log-summary').innerHTML=`
+  const listened = activity.filter(a => a.action==='listened').length;
+  const downloaded = activity.filter(a => a.action==='downloaded').length;
+  const unique = new Set(activity.map(a => a.listener)).size;
+  document.getElementById('log-summary').innerHTML = `
     <div class="log-stat"><div class="n">${unique}</div><div class="l">People</div></div>
     <div class="log-stat"><div class="n">${listened}</div><div class="l">Listened</div></div>
     <div class="log-stat"><div class="n">${downloaded}</div><div class="l">Downloaded</div></div>`;
-  const filtered=activeF==='all'?activity:activity.filter(a=>a.action===activeF);
-  const el=document.getElementById('activity-log');
-  if(!filtered.length){el.innerHTML='<div class="log-empty">No activity yet.</div>';return;}
-  el.innerHTML=filtered.slice(0,100).map(a=>`
+  const filtered = activeF==='all' ? activity : activity.filter(a => a.action===activeF);
+  const el = document.getElementById('activity-log');
+  if(!filtered.length) { el.innerHTML = '<div class="log-empty">No activity yet.</div>'; return; }
+  el.innerHTML = filtered.slice(0,100).map(a => `
     <div class="log-item">
       <div class="log-dot ${a.action}"></div>
       <div class="log-info">
         <strong>${a.listener}<span class="log-badge ${a.action}">${a.action==='listened'?'✅ Listened':'⬇ Downloaded'}</span></strong>
         <div class="ep">${a.ep_title}</div>
-        <div class="ts">${new Date(a.created_at).toLocaleString()}</div>
+        <div class="ts">${a.created_at ? new Date(a.created_at).toLocaleString() : ''}</div>
       </div>
     </div>`).join('');
 }
-function flash(id){const el=document.getElementById(id);el.style.display='block';setTimeout(()=>el.style.display='none',2000);}
+
+function flash(id) { const el=document.getElementById(id); el.style.display='block'; setTimeout(()=>el.style.display='none',2500); }
 
 // Init
-const saved=localStorage.getItem('flow_email');
-if(saved){email=saved;boot();}
+if(email) boot();
 </script>
 </body>
 </html>
